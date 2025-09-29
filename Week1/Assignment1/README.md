@@ -6,13 +6,13 @@ This is the README.md file for the Week 1 project for homework assignments in HT
 
 This is where all week 1 homework and assignments will be stored. You will be able to view all assignments here and you can find other weeks for the class just outside of this folder. 
 
-## Assignments
+## Assignment
 
 - Extend your HTML file by exploring and implementing at least 5 different HTML elements from the MDN HTML Elements Reference
 
-### Requirements:
+### Requirements to complete the Assignment:
 - Choose elements we haven't covered in class
-- Add them to your HTML file with meaninful context
+- Add them to your HTML file with meaningful context
 - Style at least 3 of them with CSS
 - Create a GitHub repository with your files (this repository...)
 
