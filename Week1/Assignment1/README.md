@@ -18,4 +18,4 @@ Week1/
 
 other files and resources included as well
 ```
-Will be able to view week 2 and so on outside this directory
+Will be able to view week 2 and so on outside the parent of this directory
