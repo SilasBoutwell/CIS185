@@ -15,13 +15,13 @@
     // Prevent restoring previous scroll position on reload/navigation
     try {
       if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-    } catch (e) {}
+    } catch (e) { }
 
     // Ensure we start at the top on load
-    window.addEventListener('DOMContentLoaded', function() {
+    window.addEventListener('DOMContentLoaded', function () {
       // double-call technique to override browser restore
       window.scrollTo(0, 0);
-      setTimeout(function() { window.scrollTo(0, 0); }, 0);
+      setTimeout(function () { window.scrollTo(0, 0); }, 0);
     });
   </script>
   <!-- Header navigation that uses styles in style.css -->
@@ -31,6 +31,7 @@
       <li><a href="#instructions">Instructions</a></li>
       <li><a href="#portfolio">Portfolio</a></li>
       <li><a href="#quote">Quote</a></li>
+      <li><a href="#q&a">Interesting Facts</a></li>
       <li><a href="#plan">Plan</a></li>
     </ul>
   </nav>
@@ -73,7 +74,9 @@
       <h4>(it's the only thing I could think of making lol)</h4>
       <img src="assets/img/me.jpg" alt="A picture of me" class="me">
       <p class="lead profileDescription">Hello there! My name is Silas!</p>
-      <p>I am a student at SPSCC studying Computer Science. I am currently learning web development with my instructor, Professor Hussain. I have experience with Python, JavaScript, C++, C#, and many others too. I am excited to see what I will learn in this class and how I can apply it to my future career.</p>
+      <p>I am a student at SPSCC studying Computer Science. I am currently learning web development with my instructor,
+        Professor Hussain. I have experience with Python, JavaScript, C++, C#, and many others too. I am excited to see
+        what I will learn in this class and how I can apply it to my future career.</p>
       <p style="display: inline;">100%</p>
       <progress value="100" max="100"> 100% </progress>
 
@@ -88,6 +91,23 @@
           </blockquote>
           <figcaption class="lead">- John Romero</figcaption>
         </figure>
+      </div>
+
+      <!-- Q&A -->
+      <div id="q&a">
+        <h3 class="title">Some Interesting Facts About Me</h3>
+        <details>
+          <summary class="pointer">Favorite Color</summary>
+          <p>My favorite color is green. Although I do like many other colors, but it depends on what the context is</p>
+        </details>
+        <details>
+          <summary class="pointer">Hobbies</summary>
+          <p>I enjoy hiking and outdoor recreational activities. I also like playing music, reading, and math. I especially enjoy coding though</p>
+        </details>
+        <details id="random-details">
+          <summary class="pointer">Random Fact...</summary>
+          <p id="random-fact"></p>
+        </details>
       </div>
 
       <!-- Plan Section -->
@@ -120,6 +140,7 @@
 </html>
 
 <script>
+
   // Toggle header visibility after scrolling a bit
   (function () {
     const nav = document.querySelector('.header-nav');
@@ -141,7 +162,7 @@
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
   })();
-  
+
   // Show nav at load. Hide on scroll down, show on scroll up.
   (function () {
     const nav = document.querySelector('.header-nav');
@@ -185,5 +206,56 @@
         ticking = true;
       }
     }, { passive: true });
+  })();
+
+  // Random fact generator for random facts section
+  (function () {
+    let facts = [
+      "I bring two laptops with me every time I am at SPSCC.",
+      "I know over 6 different instruments.",
+      "This is not actually my first website... Ask me about it sometime ;)",
+      "I am working on a song and I hope to share it with the world when I finish.",
+      "I am working on creating an app from scratch!",
+      "I'm learning to speak French. Voila!",
+      "I love playing airsoft and paintball.",
+      "I used to read a ton! I could finish a novel in 2 weeks and a series in a month or two way back in my prime lol.",
+      "This is actually a random fact generator about me and if you close the tab and re-open it, it will show you a new fact!",
+      "I used to raise hogs when I was younger.",
+      "I am a STEM tutor here at SPSCC.",
+      "I am learning how to design apps.",
+    ];
+    let usedFacts = [];
+
+    const factElement = document.getElementById('random-fact');
+    if (!factElement) return;
+
+    function getRandomFact() {
+      if (facts.length === 0) {
+        // refill facts from usedFacts and reset usedFacts
+        facts = usedFacts.slice();
+        usedFacts = [];
+      }
+
+      // pick a random index and remove it from facts
+      const index = Math.floor(Math.random() * facts.length);
+      const [fact] = facts.splice(index, 1);
+      usedFacts.push(fact);
+      return fact;
+    }
+
+    function updateFact() {
+      factElement.textContent = getRandomFact();
+    }
+
+    // Update fact once now
+    updateFact();
+
+    // Update when the Random Fact details is opened
+    const randomDetails = document.getElementById('random-details');
+    if (randomDetails) {
+      randomDetails.addEventListener('toggle', function () {
+        if (randomDetails.open) updateFact();
+      });
+    }
   })();
 </script>
