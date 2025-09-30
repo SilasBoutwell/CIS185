@@ -77,6 +77,7 @@
       <p>I am a student at SPSCC studying Computer Science. I am currently learning web development with my instructor,
         Professor Hussain. I have experience with Python, JavaScript, C++, C#, and many others too. I am excited to see
         what I will learn in this class and how I can apply it to my future career.</p>
+      <p class="lead">Progress bar for creativity and confidence for success in the class</p>
       <p style="display: inline;">100%</p>
       <progress value="100" max="100"> 100% </progress>
 
@@ -102,7 +103,8 @@
         </details>
         <details>
           <summary class="pointer">Hobbies</summary>
-          <p>I enjoy hiking and outdoor recreational activities. I also like playing music, reading, and math. I especially enjoy coding though</p>
+          <p>I enjoy hiking and outdoor recreational activities. I also like playing music, reading, and math. I
+            especially enjoy coding though</p>
         </details>
         <details id="random-details">
           <summary class="pointer">Random Fact...</summary>
@@ -211,20 +213,22 @@
   // Random fact generator for random facts section
   (function () {
     let facts = [
+      "This is actually a random fact generator about me and if you close the tab and re-open it, it will show you a new fact!",
+    ];
+
+    let usedFacts = [
+      "I used to raise hogs when I was younger.",
+      "I am a STEM tutor here at SPSCC.",
+      "I am learning how to design apps.",
       "I bring two laptops with me every time I am at SPSCC.",
-      "I know over 6 different instruments.",
+      "I know how to play more than 6 instruments.",
       "This is not actually my first website... Ask me about it sometime ;)",
       "I am working on a song and I hope to share it with the world when I finish.",
       "I am working on creating an app from scratch!",
       "I'm learning to speak French. Voila!",
       "I love playing airsoft and paintball.",
       "I used to read a ton! I could finish a novel in 2 weeks and a series in a month or two way back in my prime lol.",
-      "This is actually a random fact generator about me and if you close the tab and re-open it, it will show you a new fact!",
-      "I used to raise hogs when I was younger.",
-      "I am a STEM tutor here at SPSCC.",
-      "I am learning how to design apps.",
     ];
-    let usedFacts = [];
 
     const factElement = document.getElementById('random-fact');
     if (!factElement) return;
@@ -246,9 +250,6 @@
     function updateFact() {
       factElement.textContent = getRandomFact();
     }
-
-    // Update fact once now
-    updateFact();
 
     // Update when the Random Fact details is opened
     const randomDetails = document.getElementById('random-details');
