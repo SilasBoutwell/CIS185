@@ -1,7 +1,315 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Smooth scrolling and nav offset variable */
+:root {
+  --nav-height: 54px;
+  /* adjust if your nav is taller */
+}
+
+html {
+  scroll-behavior: smooth;
+  /* ensures anchored targets account for fixed nav height */
+  scroll-padding-top: var(--nav-height);
+}
+
 body {
-  height: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f7faff 0%, #d4dbeb 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f3f6fd 100%);
+  border-radius: 32px;
+  box-shadow: 0 8px 32px rgba(60, 80, 120, 0.12);
+  padding: 48px 64px;
+  max-width: 900px;
+  width: 90%;
+  /* ensure there's space under the fixed nav */
+  margin: calc(48px + var(--nav-height)) auto 48px auto;
+}
+
+.main-card>* {
+  /* Ensure all content inside the card is spaced nicely */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container {
   align-items: center;
   justify-content: center;
   text-align: center;
   margin-top: 60px;
+}
+
+.header-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--nav-height);
+  background: linear-gradient(90deg, #f0f4ff 0%, #fefeff 100%);
+  box-shadow: 0 2px 8px rgba(60, 80, 120, 0.07);
+  padding: 12px 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  transform: translateY(-120%);
+  /* hidden above viewport initially */
+  transition: transform 280ms ease, box-shadow 200ms ease;
+}
+
+/* colored gradient shadow under the nav */
+.header-nav::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -8px;
+  height: 64px;
+  background: linear-gradient(90deg, rgba(106,130,251,0.28) 0%, rgba(252,92,125,0.28) 100%);
+  filter: blur(28px);
+  z-index: 0; /* sit behind nav content but above page background */
+  pointer-events: none;
+}
+
+.header-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 32px;
+}
+
+/* ensure nav links sit above the gradient glow */
+.header-nav > ul {
+  position: relative;
+  z-index: 2;
+}
+
+.header-nav li {
+  display: inline;
+}
+
+.header-nav a {
+  text-decoration: none;
+  font-weight: 600;
+  color: #2a2a7a;
+  font-size: 1.1rem;
+  padding: 6px 14px;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.header-nav a:hover,
+.header-nav a:focus {
+  background: linear-gradient(90deg, #6a82fb 0%, #fc5c7d 100%);
+  color: #fff;
+}
+
+/* When the nav has the visible class it slides down into view */
+.header-nav.visible {
+  transform: translateY(0);
+  box-shadow: 0 6px 20px rgba(60, 80, 120, 0.15);
+}
+
+/* Hidden state used when scrolling down */
+.header-nav.hidden {
+  transform: translateY(-120%);
+}
+
+.instructions {
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.lead {
+  font-size: 1.25rem;
+  font-weight: 300;
+}
+
+figure {
+  padding: 20px;
+  background-color: rgb(240, 240, 240);
+  border-radius: 10px;
+  width: 500px;
+}
+
+blockquote {
+  font-style: italic;
+  border-left: 5px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0 10px;
+}
+
+blockquote::before {
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+  color: #ccc;
+}
+
+blockquote::after {
+  content: close-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.5em;
+  color: #ccc;
+}
+
+blockquote p {
+  display: inline;
+}
+
+figcaption {
+  font-size: 0.9em;
+  color: #555;
+  margin-top: 5px;
+}
+
+.portfolio {
+  margin-top: 40px;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.me {
+  width: 80px;
+  border-radius: 50%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  display: inline;
+  vertical-align: middle;
+  border: 2px solid #ccc;
+}
+
+.profileDescription {
+  margin-top: 0;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  display: inline;
+}
+
+.codeBlue {
+  color: blue;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #f0f0f0;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+details {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 20px auto;
+  width: 90%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
+  transition: box-shadow 0.2s;
+}
+
+details[open] {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  border-color: #bbb;
+}
+
+summary {
+  font-weight: 600;
+  font-size: 1.1em;
+  background: linear-gradient(90deg, #e3e3ff 0%, #f8f8f8 100%);
+  padding: 8px 12px;
+  border-radius: 6px;
+  outline: none;
+  transition: background 0.2s;
+}
+
+summary:hover,
+summary:focus {
+  background: linear-gradient(90deg, #d0d0ff 0%, #ececec 100%);
+  color: #2a2a7a;
+}
+
+progress {
+  width: 300px;
+  height: 20px;
+  vertical-align: middle;
+}
+
+hr {
+  border: 0;
+  height: 2px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, rgba(106,130,251,0.22) 0%, rgba(252,92,125,0.22) 50%, rgba(106,130,251,0.12) 100%);
+  box-shadow: 0 6px 18px rgba(106,130,251,0.06), 0 2px 8px rgba(252,92,125,0.04) inset;
+}
+
+h2 {
+  margin-bottom: 10px;
+}
+
+h4 {
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+img {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+.center {
+  text-align: center;
+}
+
+.title {
+  display: inline-block;
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #2a2a7a;
+  position: relative;
+  padding-bottom: 8px;
+  background: none;
+  cursor: pointer;
+}
+
+.title::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 4px;
+  width: 100%;
+  background: linear-gradient(90deg, #6a82fb 0%, #fc5c7d 100%);
+  transform: scaleX(0.4);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: left;
+  border-radius: 2px;
+}
+
+.title:hover::after,
+.title:focus::after {
+  transform: scaleX(1);
+}
+
+.title2 {
+  display: inline-block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2a2a7a;
 }

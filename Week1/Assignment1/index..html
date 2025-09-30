@@ -1,15 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <link rel="script" href="script.js">
   <title>Week 1 Practice Website</title>
 </head>
+
 <body>
-  <h1>Week 1 Practice Website</h1>
-  <br><br>
-  <h4>Our amazing instructor below...</h4>
-  <img src="assets/img/image.png" alt="teacher" width="300">
+  <script>
+    // Prevent restoring previous scroll position on reload/navigation
+    try {
+      if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    } catch (e) {}
+
+    // Ensure we start at the top on load
+    window.addEventListener('DOMContentLoaded', function() {
+      // double-call technique to override browser restore
+      window.scrollTo(0, 0);
+      setTimeout(function() { window.scrollTo(0, 0); }, 0);
+    });
+  </script>
+  <!-- Header navigation that uses styles in style.css -->
+  <nav class="header-nav">
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#instructions">Instructions</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#quote">Quote</a></li>
+      <li><a href="#plan">Plan</a></li>
+    </ul>
+  </nav>
+
+  <div class="main-card">
+    <div id="home" class="container">
+      <h1 class="title">Week 1 Homework Assignment 1</h1>
+      <br><br>
+      <h4>Our amazing instructor below...</h4>
+      <img src="assets/img/image.png" alt="teacher" width="300">
+      <br><br>
+      <hr>
+    </div>
+    <div id="instructions" class="instructions">
+      <h2>Our assignment to complete for the week...</h2>
+      <p class="lead">Extend your HTML file by exploring and implementing at least 5 different HTML elements from the
+        MDN
+        HTML Elements Reference
+      </p>
+      <ul>
+        <li>
+          Choose elements we haven't covered in class
+        </li>
+        <li>
+          Add them to your HTML file with meaningful context
+        </li>
+        <li>
+          Style at least 3 of them with CSS
+        </li>
+        <li>
+          Create a GitHub repository with your files
+        </li>
+      </ul>
+    </div>
+    <hr>
+
+    <!-- Portfolio Section -->
+    <div id="portfolio" class="portfolio">
+      <h2 class="title">My Portfolio AKA My Assignment</h2>
+      <h4>(it's the only thing I could think of making lol)</h4>
+      <img src="assets/img/me.jpg" alt="A picture of me" class="me">
+      <p class="lead profileDescription">Hello there! My name is Silas!</p>
+      <p>I am a student at SPSCC studying Computer Science. I am currently learning web development with my instructor, Professor Hussain. I have experience with Python, JavaScript, C++, C#, and many others too. I am excited to see what I will learn in this class and how I can apply it to my future career.</p>
+      <p style="display: inline;">100%</p>
+      <progress value="100" max="100"> 100% </progress>
+
+      <!-- Random Quote -->
+      <div id="quote" class="quote">
+        <figure>
+          <h3 class="title">Random Quote</h3>
+          <blockquote>
+            <p>You might not think that programmers are artists, but programming is an extremely creative profession.
+              It's
+              logic-based creativity.</p>
+          </blockquote>
+          <figcaption class="lead">- John Romero</figcaption>
+        </figure>
+      </div>
+
+      <!-- Plan Section -->
+      <div id="plan" class="plan">
+        <h3 class="title">How I plan to finish this assignment</h3>
+        <p class="lead">I plan to finish this assignment by adding more HTML elements and styling them with CSS. I will
+          also
+          add more content to my portfolio section. I will also make sure to create a GitHub repository with my files.
+        </p>
+        <p>Here's what I've done so far to accomplish this assignment...</p>
+        <p>
+        <ol>
+          <li>I've added images using the <span class="codeBlue">&lt;img&gt;</span> element</li>
+          <li>Added a random quote section with the <span class="codeBlue">&lt;figure&gt;</span>, <span
+              class="codeBlue">&lt;blockquote&gt;</span>, and <span class="codeBlue">&lt;figcaption&gt;</span> elements
+          </li>
+          <li>I added an interesting facts section with the <span class="codeBlue">&lt;details&gt;</span> and <span
+              class="codeBlue">&lt;summary&gt;</span> elements</li>
+          <li>Added progress bar using the <span class="codeBlue">&lt;progress&gt;</span> element</li>
+          <li>Did light styling on the page with CSS and styled at least 3 (actually more) of the elements</li>
+        </ol>
+        </p>
+        <p class="center title2">With all of those things accomplished, I can now consider this assignment complete!</p>
+      </div>
+    </div>
+  </div>
+
 </body>
+
 </html>
+
+<script>
+  // Toggle header visibility after scrolling a bit
+  (function () {
+    const nav = document.querySelector('.header-nav');
+    if (!nav) return;
+    const showAfter = 120; // px scrolled before showing nav
+    let lastScroll = 0;
+
+    function onScroll() {
+      const sc = window.scrollY || document.documentElement.scrollTop;
+      if (sc > showAfter) {
+        nav.classList.add('visible');
+      } else {
+        nav.classList.remove('visible');
+      }
+      lastScroll = sc;
+    }
+
+    // Run once to set correct state on load
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  })();
+  
+  // Show nav at load. Hide on scroll down, show on scroll up.
+  (function () {
+    const nav = document.querySelector('.header-nav');
+    if (!nav) return;
+
+    const hideAfter = 50; // start hiding behavior after this many px
+    let lastScroll = window.scrollY || document.documentElement.scrollTop;
+    let ticking = false;
+
+    // Ensure initial state: visible
+    nav.classList.add('visible');
+
+    function update(scrollY) {
+      if (scrollY < hideAfter) {
+        // near top: always visible
+        nav.classList.remove('hidden');
+        nav.classList.add('visible');
+        return;
+      }
+
+      if (scrollY > lastScroll) {
+        // scrolling down -> hide nav
+        nav.classList.add('hidden');
+        nav.classList.remove('visible');
+      } else {
+        // scrolling up -> show nav
+        nav.classList.add('visible');
+        nav.classList.remove('hidden');
+      }
+
+      lastScroll = scrollY <= 0 ? 0 : scrollY;
+    }
+
+    window.addEventListener('scroll', function () {
+      const scrollY = window.scrollY || document.documentElement.scrollTop;
+      if (!ticking) {
+        window.requestAnimationFrame(function () {
+          update(scrollY);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  })();
+</script>
