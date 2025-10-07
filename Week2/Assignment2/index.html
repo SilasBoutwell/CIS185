@@ -20,10 +20,18 @@
 
 <body>
 
+  <!-- Preloader -->
+  <div id="preloader" class="preloader" aria-hidden="true">
+    <div class="preloader-inner">
+      <div class="spinner" aria-hidden="true"></div>
+      <div class="preloader-text">Loading...</div>
+    </div>
+  </div>
+
   <!-- ====== -->
   <!-- HEADER -->
   <!-- ====== -->
-  <header>
+  <header id="home">
     <div class="header">
       <h1>Silas Boutwell</h1>
     </div>
@@ -32,7 +40,7 @@
         <h2>I'm a <span id="typed"
             data-typed-items="developer, coder, designer, musician, songwriter, freelancer"></span><span id="caret"
             class="caret" aria-hidden="true"></span></h2>
-        <p>Blending biblical narrative with personal resilience.</p>
+        <p>Blending Biblical narrative with personal resilience</p>
       </div>
     </section>
   </header>
@@ -40,23 +48,50 @@
   <main id="main">
     <section id="about">
       <h2>About Me</h2>
-      <p>I write songs that encourage perseverance and spiritual trust, often drawing from stories like Ruth to connect
-        personal and universal struggles.</p>
+      <p>Hello! my name is Silas. I love coding and programming as well as many other things. I first started coding
+        when I was around 12 years old. I launched my first website at 16 and still maintain it today. I also am
+        currently working on making my own app from the ground up. I hope to finish that project soon. 
+      </p>
+      <p>I also enjoy music and playing instruments and writing songs. I also love outdoor recreational activities. But what I love
+        most of all is serving God and using my gifts and hard work for Him. I love our church, and I love ministering
+        to people in whatever way I can.
+      </p>
     </section>
 
-    <section id="work">
-      <h2>Featured Work</h2>
+    <section id="projects">
+      <h2>Featured Work and Projects</h2>
       <div class="card">
-        <h3>Don't Pack, Pray</h3>
-        <p>A song about trusting God through adversity. Road-trip imagery meets spiritual conviction.</p>
+        <h3>Testimonies</h3>
+        <p>Testimonies is a website I created from the ground up. It is a site that I made for our church to be able to
+          put their testimonies on there so it's a lot easier to share them with people. Now, if someone has their
+          testimony on there, they can easily tell people or give them little business cards with QR codes on them that
+          go to their personal testimony. You can view this at <a href="https://testimonies.us">testimonies.us</a></p>
       </div>
-      <!-- Add more cards as needed -->
+      <div class="card">
+        <h3>App Design</h3>
+        <p>Another thing that I am currently working on is designing an app from scratch using React Native. This is currently a work in progress and has a long way to go, but if you want to check it out, you can find the repository at <a href="https://github.com/SilasBoutwell/GodAndITime">github.com/SilasBoutwell/GodAndITime</a></p>
+      </div>
+      <div class="card">
+        <h3>Other fun coding projects</h3>
+        <p>I will also include my GitHub profile page if you want to check out any of my other projects. <a href="https://github.com/SilasBoutwell">github.com/SilasBoutwell</a></p>
+      </div>
     </section>
 
     <section id="contact">
       <h2>Contact</h2>
-      <p>Let's collaborate or connect! Reach me at <a href="mailto:silas@example.com">silas@example.com</a></p>
+      <div class="card">
+        <h3>Let's collaborate or connect!</h3>
+      <p>Email: <a href="mailto:silas@example.com">silas@example.com</a></p>
+      <p>Phone: <a href="tel:1234567890">1234567890</a></p>
+      </div>
     </section>
+
+    <!-- ====== -->
+    <!-- FOOTER -->
+    <!-- ====== -->
+    <footer>
+      <p>© 2025 Silas Boutwell. All rights reserved.</p>
+    </footer>
   </main>
 
   <!-- ====== -->
@@ -64,18 +99,12 @@
   <!-- ====== -->
   <nav>
     <div class="nav-container">
+      <span class="nav-item"><a class="nav-link active" href="#home">Home</a></span>
       <span class="nav-item"><a class="nav-link" href="#about">About</a></span>
-      <span class="nav-item"><a class="nav-link" href="#work">Work</a></span>
+      <span class="nav-item"><a class="nav-link" href="#projects">Projects</a></span>
       <span class="nav-item"><a class="nav-link" href="#contact">Contact</a></span>
     </div>
   </nav>
-
-  <!-- ====== -->
-  <!-- FOOTER -->
-  <!-- ====== -->
-  <footer>
-    <p>© 2025 Silas Boutwell. All rights reserved.</p>
-  </footer>
 
 </body>
 
@@ -103,15 +132,12 @@
     function tick() {
       const current = items[itemIndex] || '';
       if (!deleting) {
-        // Type forward
         charIndex = Math.min(charIndex + 1, current.length);
         typedEl.textContent = current.slice(0, charIndex);
         if (charIndex === current.length) {
-          // Finished typing, flash caret briefly then schedule delete after holdDelay
           caretEl.classList.add('flash');
           setTimeout(() => {
             caretEl.classList.remove('flash');
-            // wait a bit with the full word visible, then start deleting
             setTimeout(() => {
               deleting = true;
               setTimeout(tick, backspaceSpeed);
@@ -119,8 +145,10 @@
           }, 400);
           return;
         }
+
         setTimeout(tick, typeSpeed);
       } else {
+
         // Deleting
         charIndex = Math.max(charIndex - 1, 0);
         typedEl.textContent = current.slice(0, charIndex);
@@ -130,11 +158,11 @@
           setTimeout(tick, typeSpeed);
           return;
         }
+
         setTimeout(tick, backspaceSpeed);
       }
     }
 
-    // Kick off after a short delay so hero is visible
     setTimeout(tick, 700);
   })();
 </script>
@@ -142,7 +170,6 @@
 <!-- Navigation active-state script -->
 <script>
   (function () {
-    // Helper: map section id to nav-link
     const navLinks = Array.from(document.querySelectorAll('.nav-link'));
     const sections = navLinks
       .map(a => {
@@ -156,30 +183,73 @@
       document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
     }
 
-    // Click handling: set active on click and smooth scroll behavior
+    let ignoreObserver = false;
+
+    // Click handling:
     navLinks.forEach(a => {
       a.addEventListener('click', (e) => {
+        e.preventDefault();
         clearActive();
         a.classList.add('active');
         const parent = a.closest('.nav-item');
         if (parent) parent.classList.add('active');
-        // let anchor do its default jump/scroll; optionally smooth scroll
-        e.preventDefault();
+
         const id = a.getAttribute('href').slice(1);
         const target = document.getElementById(id);
         if (target) {
-          window.scrollTo({ top: target.offsetTop - 20, behavior: 'smooth' });
+          try {
+            history.pushState(null, '', `#${id}`);
+          } catch (e) {
+            // ignore (older browsers)
+          }
+
+          const targetTop = Math.round(target.getBoundingClientRect().top + window.pageYOffset - 20);
+          ignoreObserver = true;
+
+          const distance = Math.abs(window.pageYOffset - targetTop);
+          const approxDuration = Math.min(1200, Math.max(250, Math.round(distance / 2))); // ms
+
+          window.scrollTo({ top: targetTop, behavior: 'smooth' });
+
+          setTimeout(() => { ignoreObserver = false; }, approxDuration + 80);
         }
       });
     });
 
     // IntersectionObserver to update active as user scrolls
     if ('IntersectionObserver' in window && sections.length) {
-      const obsOptions = { root: null, rootMargin: '-40% 0px -40% 0px', threshold: 0 };
+      const obsOptions = { root: null, rootMargin: '-40% 0px -40% 0px', threshold: [0, 0.25, 0.5, 0.75, 1] };
+      let observerTimeout = null;
       const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const id = entry.target.id;
+        if (ignoreObserver) return;
+        if (observerTimeout) clearTimeout(observerTimeout);
+        observerTimeout = setTimeout(() => {
+          const viewportTop = 0;
+          const viewportBottom = window.innerHeight;
+          let best = null;
+          let bestVisible = -1;
+
+          const nearBottom = (window.innerHeight + window.pageYOffset) >= (document.body.scrollHeight - 40);
+
+          if (nearBottom && sections.length) {
+            best = sections[sections.length - 1];
+          } else {
+            sections.forEach(sec => {
+              if (!sec) return;
+              const rect = sec.getBoundingClientRect();
+              const visibleTop = Math.max(rect.top, viewportTop);
+              const visibleBottom = Math.min(rect.bottom, viewportBottom);
+              const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+
+              if (visibleHeight > bestVisible) {
+                bestVisible = visibleHeight;
+                best = sec;
+              }
+            });
+          }
+
+          if (best && best.id) {
+            const id = best.id;
             const link = document.querySelector(`.nav-link[href="#${id}"]`);
             if (link) {
               clearActive();
@@ -188,7 +258,7 @@
               if (parent) parent.classList.add('active');
             }
           }
-        });
+        }, 60);
       }, obsOptions);
 
       sections.forEach(s => observer.observe(s));
@@ -196,4 +266,45 @@
   })();
 </script>
 
+<!-- Preloader script -->
+<script>
+  (function () {
+    const preloader = document.getElementById('preloader');
+    const safeAddLoaded = () => {
+      const originalScrollRestoration = ('scrollRestoration' in history) ? history.scrollRestoration : null;
+      try {
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+      } catch (e) { /* ignore */ }
+
+      try { window.scrollTo(0, 0); } catch (e) { /* ignore */ }
+
+      document.body.classList.add('loaded');
+
+      if (preloader) {
+        preloader.classList.add('hidden');
+        setTimeout(() => {
+          if (preloader && preloader.parentNode) preloader.parentNode.removeChild(preloader);
+          try {
+            if (originalScrollRestoration !== null) history.scrollRestoration = originalScrollRestoration;
+          } catch (e) { /* ignore */ }
+        }, 480);
+      } else {
+        try {
+          if (originalScrollRestoration !== null) history.scrollRestoration = originalScrollRestoration;
+        } catch (e) { /* ignore */ }
+      }
+    };
+
+    if (document.readyState === 'complete') {
+      safeAddLoaded();
+    } else {
+      window.addEventListener('load', safeAddLoaded, { once: true });
+
+      // Fallback: so the loader doesn't go on forever if something goes wrong
+      setTimeout(() => {
+        if (!document.body.classList.contains('loaded')) safeAddLoaded();
+      }, 10000);
+    }
+  })();
+</script>
 </html>
