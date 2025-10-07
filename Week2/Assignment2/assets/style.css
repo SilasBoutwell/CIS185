@@ -1,0 +1,236 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+  --nav-height: 54px;
+}
+
+body {
+  color: #272829;
+  background: linear-gradient(to right, #f0fcff, #aff0ff);
+  /* background: linear-gradient(to right, #f0f4ff, #dbe9ff); */
+  margin: 0;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('./img/background.jpg');
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 2px 8px rgba(60, 80, 120, 0.07);
+  opacity: .9;
+  z-index: -1;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Raleway", sans-serif;
+}
+
+/* ========== */
+/* Navigation */
+/* ========== */
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: transparent;
+  /* box-shadow: 0 2px 4px rgba(0,0,0,0.1); */
+  position: fixed;
+  bottom: 20px;
+  width: 100%;
+}
+
+.nav-container {
+  background-color: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  border-radius: 30px;
+  padding: 0.5rem 1.5rem;
+  align-items: center;
+  justify-content: center;
+  display: inline-flex;
+  gap: 2rem;
+}
+
+.nav-item {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* Bubble-style nav links */
+.nav-link {
+  display: inline-block;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  text-decoration: none;
+  color: #2c3e50;
+  font-weight: 600;
+  text-align: center;
+  transition: transform 160ms ease, background-color 160ms ease, box-shadow 160ms ease, color 160ms ease;
+}
+
+.nav-link:hover {
+  transform: translateY(-3px) scale(1.02);
+  background-color: rgba(110, 198, 255, 0.4);
+  box-shadow: 0 6px 18px rgba(44,62,80,0.06);
+}
+
+/* Active bubble style */
+.nav-item .nav-link.active,
+.nav-item.active .nav-link {
+  background: linear-gradient(135deg,#4fb3ff,#6ec6ff);
+  color: white;
+  box-shadow: 0 8px 24px rgba(78,160,220,0.22);
+  transform: translateY(-2px);
+}
+
+/* For smaller screens reduce gap */
+@media (max-width: 520px) {
+  .nav-container { gap: 0.6rem; padding: 0.4rem 0.8rem; }
+  .nav-link { padding: 0.35rem 0.6rem; font-size: 0.95rem; }
+}
+
+/* ====== */
+/* Header */
+/* ====== */
+header {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.header {
+  font-size: 1.2rem;
+  color: #2c3e50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-radius: 0px 0px 10px 10px;
+}
+
+/* ============ */
+/* Hero Section */
+/* ============ */
+.hero {
+  background-image: url('./img/Favorite.JPG');
+  background-size: cover;
+  background-position: center;
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  opacity: 0.9;
+  text-align: center;
+  margin: 2rem;
+  border-radius: 20px;
+}
+
+.hero-text h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.hero-text p {
+  font-size: 1.2rem;
+}
+
+/* Typing effect styles */
+#typed {
+  font-family: "Raleway", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  display: inline;
+}
+
+.caret {
+  display: inline-block;
+  width: 2px;
+  height: 1.2em;
+  margin-left: 6px;
+  background: rgba(255,255,255,0.95);
+  border-radius: 1px;
+  vertical-align: middle;
+  transform-origin: center;
+  animation: blink 1s steps(2, start) infinite;
+}
+
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+/* Flash animation applied briefly when a word finishes typing */
+.caret.flash {
+  animation: flash 400ms linear 1, blink 1s steps(2, start) infinite;
+}
+
+@keyframes flash {
+  0% { opacity: 1; transform: scaleY(1); background: rgba(255,255,255,0.95); }
+  50% { opacity: 0.2; transform: scaleY(1.16); background: #ffd; }
+  100% { opacity: 1; transform: scaleY(1); background: rgba(255,255,255,0.95); }
+}
+
+/* ==== */
+/* Main */
+/* ==== */
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+/* ======== */
+/* Sections */
+/* ======== */
+section {
+  padding: 3rem 2rem;
+}
+
+#about, #contact {
+  background-color: #ffffff;
+  opacity: .8;
+}
+
+#work {
+  background-color: #eef6ff;
+}
+
+.card {
+  background-color: #fff;
+  padding: 1.5rem;
+  margin-top: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* ====== */
+/* Footer */
+/* ====== */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: transparent;
+  /* background-color: #dbe9ff; */
+  font-size: 0.9rem;
+}
