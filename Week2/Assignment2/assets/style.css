@@ -132,7 +132,28 @@ header {
   background-color: rgba(255, 255, 255, 0.9);
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   border-radius: 10px;
+  overflow: hidden;
 }
+
+/* .header h1 {
+  position: relative;
+  display: inline-block;
+}
+
+.header h1::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 50%;
+  bottom: -1rem;
+  width: 120px;
+  height: 18px;
+  transform: translateX(-50%);
+  background: url("data:image/svg+xml;utf8,<svg width='120' height='18' xmlns='http://www.w3.org/2000/svg'><path d='M5 10 Q 20 0, 40 10 Q 60 20, 80 10 Q 100 0, 115 10' stroke='%234fb3ff' stroke-width='3' fill='none' /></svg>");
+  background-repeat: no-repeat;
+  background-size: contain;
+  pointer-events: none;
+} */
 
 /* ============ */
 /* Hero Section */
@@ -206,7 +227,7 @@ header {
 /* Main */
 /* ==== */
 main {
-  max-width: 900px;
+  max-width: calc(900px - 2rem);
   margin: 0 auto 5rem auto;
   padding: 1rem;
   border-radius: 10px;
