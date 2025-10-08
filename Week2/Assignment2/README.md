@@ -13,7 +13,6 @@
 
 ## Project Structure
 
-````markdown
 ## Week 2 — Assignment 2: Personal Portfolio
 
 This repository contains a single-page personal portfolio built as a class assignment. The project demonstrates semantic HTML, an external CSS file, simple JavaScript enhancements (typing effect, smooth navigation), and layout using Flexbox.
@@ -88,5 +87,3 @@ Notes and examples
 Accessibility and variables
 - Color and contrast are controlled with CSS variables (see `:root` in `assets/style.css`) so you can quickly tweak colors for better contrast.
 - Form fields have focus styles to assist keyboard users; labels are paired with inputs correctly.
-
-````
