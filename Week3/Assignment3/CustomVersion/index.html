@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 2 Assignment 2 Personal Portfolio</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="./assets/img/me.jpg">
+
+  <!-- Style -->
+  <link rel="stylesheet" href="./assets/style.css">
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- Preloader -->
+  <div id="preloader" class="preloader" aria-hidden="true">
+    <div class="preloader-inner">
+      <div class="spinner" aria-hidden="true"></div>
+      <div class="preloader-text">Loading...</div>
+    </div>
+  </div>
+
+  <!-- ====== -->
+  <!-- HEADER -->
+  <!-- ====== -->
+  <header id="home">
+    <div class="header">
+      <img src="./assets/img/me.jpg" alt="A picture of a nice looking young man" class="header-img">
+      <h1>Silas Boutwell</h1>
+    </div>
+    <section class="hero">
+      <div class="hero-text">
+        <h2>I'm a <span id="typed"
+            data-typed-items="developer, coder, designer, musician, songwriter, freelancer"></span><span id="caret"
+            class="caret" aria-hidden="true"></span></h2>
+        <p>Blending Biblical narrative with personal resilience</p>
+      </div>
+    </section>
+  </header>
+
+  <main id="main">
+    <section id="about">
+      <h2>About Me</h2>
+      <p>Hello! my name is Silas. I love coding and programming as well as many other things. I first started coding
+        when I was around 12 years old. I launched my first website at 16 and still maintain it today. I also am
+        currently working on making my own app from the ground up. I hope to finish that project soon.
+      </p>
+      <p>I also enjoy music and playing instruments and writing songs. I also love outdoor recreational activities. But
+        what I love
+        most of all is serving God and using my gifts and hard work for Him. I love our church, and I love ministering
+        to people in whatever way I can.
+      </p>
+    </section>
+
+    <section id="projects">
+      <h2>Featured Work and Projects</h2>
+      <div class="card">
+        <h3>Testimonies</h3>
+        <p>Testimonies is a website I created from the ground up. It is a site that I made for our church to be able to
+          put their testimonies on there so it's a lot easier to share them with people. Now, if someone has their
+          testimony on there, they can easily tell people or give them little business cards with QR codes on them that
+          go to their personal testimony. You can view this at <a href="https://testimonies.us"
+            target="_blank">testimonies.us</a></p>
+      </div>
+      <div class="card">
+        <h3>App Design</h3>
+        <p>Another thing that I am currently working on is designing an app from scratch using React Native. This is
+          currently a work in progress and has a long way to go, but I hope one day to finish and publish it for people
+          (and myself) to use! If you want to check it out, you can find the repository at <a
+            href="https://github.com/SilasBoutwell/GodAndITime" target="_blank">github.com/SilasBoutwell/GodAndITime</a>
+        </p>
+      </div>
+      <div class="card">
+        <h3>Other fun coding projects</h3>
+        <p>I will also include my GitHub profile page if you want to check out any of my other projects. <a
+            href="https://github.com/SilasBoutwell" target="_blank">github.com/SilasBoutwell</a></p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="card">
+        <h3>Let's collaborate or connect!</h3>
+        <p>Email: <a href="mailto:silas@example.com">silas@example.com</a></p>
+        <p>Phone: <a href="tel:1234567890">1234567890</a></p>
+      </div>
+      <div class="card">
+        <h2>Or send a quick message</h2>
+        <!-- Contact form: by default this will fall back to opening the user's mail client.
+           To use a server endpoint (recommended), set data-endpoint to your Formspree or other API endpoint. -->
+        <form id="contact-form" class="contact-form" method="POST" data-endpoint="">
+          <div class="form-row">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" required placeholder="Your name">
+          </div>
+
+          <div class="form-row">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required placeholder="you@example.com">
+          </div>
+
+          <div class="form-row">
+            <label for="subject">Subject</label>
+            <input id="subject" name="subject" type="text" placeholder="Subject">
+          </div>
+
+          <div class="form-row">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="6" required placeholder="Write your message..."></textarea>
+          </div>
+
+          <div class="form-row form-actions">
+            <button type="submit" id="contact-submit">Send message</button>
+            <div id="contact-status" role="status" aria-live="polite"></div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ====== -->
+    <!-- FOOTER -->
+    <!-- ====== -->
+    <footer>
+      <p>© 2025 Silas Boutwell. All rights reserved.</p>
+    </footer>
+  </main>
+
+  <!-- ====== -->
+  <!-- NAVIGATION -->
+  <!-- ====== -->
+  <nav>
+    <div class="nav-container">
+      <span class="nav-item"><a class="nav-link active" href="#home">Home</a></span>
+      <span class="nav-item"><a class="nav-link" href="#about">About</a></span>
+      <span class="nav-item"><a class="nav-link" href="#projects">Projects</a></span>
+      <span class="nav-item"><a class="nav-link" href="#contact">Contact</a></span>
+    </div>
+  </nav>
+
+</body>
+
+<!-- Typing effect script -->
+<script>
+  (function () {
+    // Simple mailto-only form handler (opens user's mail client with prefilled fields)
+    const form = document.getElementById('contact-form');
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const fd = new FormData(form);
+        const to = 'silaslee.b@gmail.com';
+        const subject = encodeURIComponent(fd.get('subject') || 'Website contact');
+        const name = fd.get('name') || '';
+        const from = fd.get('email') || '';
+        const message = fd.get('message') || '';
+        const body = encodeURIComponent(`Name: ${name}\nEmail: ${from}\n\n${message}`);
+        window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+      });
+    }
+
+    // Typing effect (unchanged)
+    const typedEl = document.getElementById('typed');
+    const caretEl = document.getElementById('caret');
+    if (typedEl) {
+      const items = (typedEl.getAttribute('data-typed-items') || '')
+        .split(',')
+        .map(s => s.trim())
+        .filter(Boolean);
+
+      // Configuration
+      const typeSpeed = 110;      // ms per character
+      const backspaceSpeed = 80; // ms per character when deleting
+      const holdDelay = 1400;    // ms to hold the full word before deleting
+
+      let itemIndex = 0;
+      let charIndex = 0;
+      let deleting = false;
+
+      function tick() {
+        const current = items[itemIndex] || '';
+        if (!deleting) {
+          charIndex = Math.min(charIndex + 1, current.length);
+          typedEl.textContent = current.slice(0, charIndex);
+          if (charIndex === current.length) {
+            caretEl.classList.add('flash');
+            setTimeout(() => {
+              caretEl.classList.remove('flash');
+              setTimeout(() => {
+                deleting = true;
+                setTimeout(tick, backspaceSpeed);
+              }, holdDelay);
+            }, 400);
+            return;
+          }
+
+          setTimeout(tick, typeSpeed);
+        } else {
+          // Deleting
+          charIndex = Math.max(charIndex - 1, 0);
+          typedEl.textContent = current.slice(0, charIndex);
+          if (charIndex === 0) {
+            deleting = false;
+            itemIndex = (itemIndex + 1) % items.length;
+            setTimeout(tick, typeSpeed);
+            return;
+          }
+
+          setTimeout(tick, backspaceSpeed);
+        }
+      }
+
+      setTimeout(tick, 700);
+    }
+  })();
+</script>
+
+<!-- Navigation active-state script -->
+<script>
+  (function () {
+    const navLinks = Array.from(document.querySelectorAll('.nav-link'));
+    const sections = navLinks
+      .map(a => {
+        const id = a.getAttribute('href')?.slice(1);
+        return id ? document.getElementById(id) : null;
+      })
+      .filter(Boolean);
+
+    function clearActive() {
+      navLinks.forEach(a => a.classList.remove('active'));
+      document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+    }
+
+    let ignoreObserver = false;
+
+    // Click handling:
+    navLinks.forEach(a => {
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        clearActive();
+        a.classList.add('active');
+        const parent = a.closest('.nav-item');
+        if (parent) parent.classList.add('active');
+
+        const id = a.getAttribute('href').slice(1);
+        const target = document.getElementById(id);
+        if (target) {
+          try {
+            history.pushState(null, '', `#${id}`);
+          } catch (e) {
+            // ignore (older browsers)
+          }
+
+          const targetTop = Math.round(target.getBoundingClientRect().top + window.pageYOffset - 20);
+          ignoreObserver = true;
+
+          const distance = Math.abs(window.pageYOffset - targetTop);
+          const approxDuration = Math.min(1200, Math.max(250, Math.round(distance / 2))); // ms
+
+          window.scrollTo({ top: targetTop, behavior: 'smooth' });
+
+          setTimeout(() => { ignoreObserver = false; }, approxDuration + 80);
+        }
+      });
+    });
+
+    // IntersectionObserver to update active as user scrolls
+    if ('IntersectionObserver' in window && sections.length) {
+      const obsOptions = { root: null, rootMargin: '-40% 0px -40% 0px', threshold: [0, 0.25, 0.5, 0.75, 1] };
+      let observerTimeout = null;
+      const observer = new IntersectionObserver((entries) => {
+        if (ignoreObserver) return;
+        if (observerTimeout) clearTimeout(observerTimeout);
+        observerTimeout = setTimeout(() => {
+          const viewportTop = 0;
+          const viewportBottom = window.innerHeight;
+          let best = null;
+          let bestVisible = -1;
+
+          const nearBottom = (window.innerHeight + window.pageYOffset) >= (document.body.scrollHeight - 40);
+
+          if (nearBottom && sections.length) {
+            best = sections[sections.length - 1];
+          } else {
+            sections.forEach(sec => {
+              if (!sec) return;
+              const rect = sec.getBoundingClientRect();
+              const visibleTop = Math.max(rect.top, viewportTop);
+              const visibleBottom = Math.min(rect.bottom, viewportBottom);
+              const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+
+              if (visibleHeight > bestVisible) {
+                bestVisible = visibleHeight;
+                best = sec;
+              }
+            });
+          }
+
+          if (best && best.id) {
+            const id = best.id;
+            const link = document.querySelector(`.nav-link[href="#${id}"]`);
+            if (link) {
+              clearActive();
+              link.classList.add('active');
+              const parent = link.closest('.nav-item');
+              if (parent) parent.classList.add('active');
+            }
+          }
+        }, 60);
+      }, obsOptions);
+
+      sections.forEach(s => observer.observe(s));
+    }
+  })();
+</script>
+
+<!-- Preloader script -->
+<script>
+  (function () {
+    const preloader = document.getElementById('preloader');
+    const safeAddLoaded = () => {
+      const originalScrollRestoration = ('scrollRestoration' in history) ? history.scrollRestoration : null;
+      try {
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+      } catch (e) { /* ignore */ }
+
+      try { window.scrollTo(0, 0); } catch (e) { /* ignore */ }
+
+      document.body.classList.add('loaded');
+
+      if (preloader) {
+        preloader.classList.add('hidden');
+        setTimeout(() => {
+          if (preloader && preloader.parentNode) preloader.parentNode.removeChild(preloader);
+          try {
+            if (originalScrollRestoration !== null) history.scrollRestoration = originalScrollRestoration;
+          } catch (e) { /* ignore */ }
+        }, 480);
+      } else {
+        try {
+          if (originalScrollRestoration !== null) history.scrollRestoration = originalScrollRestoration;
+        } catch (e) { /* ignore */ }
+      }
+    };
+
+    if (document.readyState === 'complete') {
+      safeAddLoaded();
+    } else {
+      window.addEventListener('load', safeAddLoaded, { once: true });
+
+      // Fallback: so the loader doesn't go on forever if something goes wrong
+      setTimeout(() => {
+        if (!document.body.classList.contains('loaded')) safeAddLoaded();
+      }, 10000);
+    }
+  })();
+</script>
+
+<script>
+  (function () {
+    function letterize(selector) {
+      const headings = document.querySelectorAll(selector);
+      headings.forEach(h => {
+        if (h.dataset.letterized === 'true') return;
+
+        const text = h.textContent.trim();
+        h.textContent = '';
+
+        Array.from(text).forEach((ch, i) => {
+          if (ch === ' ') {
+            const space = document.createElement('span');
+            space.className = 'letter space';
+            space.textContent = '\u00A0';
+            space.style.setProperty('--i', i);
+            h.appendChild(space);
+          } else {
+            const span = document.createElement('span');
+            span.className = 'letter';
+            span.textContent = ch;
+            span.style.setProperty('--i', i);
+            h.appendChild(span);
+          }
+        });
+
+        h.dataset.letterized = 'true';
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => letterize('.header h1'));
+    } else {
+      letterize('.header h1');
+    }
+  })();
+</script>
+
+</html>

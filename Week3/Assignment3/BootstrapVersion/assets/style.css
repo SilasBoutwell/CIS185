@@ -1,0 +1,48 @@
+/* Small overrides to adapt original look to Bootstrap layout */
+:root { --accent: #0d6efd; }
+
+body { font-family: 'Open Sans', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
+
+.header-img { width: 96px; height: 96px; object-fit: cover; }
+
+h1 { font-size: 1.75rem; letter-spacing: .5px; }
+
+.caret { display: inline-block; width: 1px; height: 1.25em; background: var(--accent); margin-left: 3px; vertical-align: middle; }
+.caret.flash { animation: caretFlash 600ms steps(1) infinite; }
+@keyframes caretFlash { 0% { opacity: 1 } 50% { opacity: 0 } 100% { opacity: 1 } }
+
+.letter { display: inline-block; transform-origin: bottom; }
+
+/* Keep footer small */
+footer p { font-size: .9rem; color: #444; }
+
+/* Improve card link visibility */
+.card a { color: var(--accent); }
+
+/* Reduce container max width for readability */
+.container { max-width: 960px; }
+
+/* --- Visual enhancements --- */
+header#home { background-image: linear-gradient(90deg, rgba(13,110,253,0.06), rgba(13,110,253,0.03)); }
+
+section#about { background: #ffffff; padding: 2.25rem; border-radius: .5rem; }
+
+section#projects { background: #f8fafc; padding: 1.5rem; border-radius: .5rem; }
+
+section#contact { background: #ffffff; padding: 1.5rem; border-radius: .5rem; }
+
+/* Space titles away from content */
+section h2 { margin-bottom: 1.25rem; }
+
+.card { transition: transform .18s ease, box-shadow .18s ease; border: 0; box-shadow: 0 6px 18px rgba(18, 38, 63, 0.06); }
+.card:hover { transform: translateY(-6px); box-shadow: 0 14px 30px rgba(18, 38, 63, 0.12); }
+
+.card .card-body { padding: 1.25rem 1.5rem; }
+
+/* Accent top border on cards (subtle) */
+.card::before { content: ''; display: block; height: 4px; border-top-left-radius: .5rem; border-top-right-radius: .5rem; background: linear-gradient(90deg, var(--accent), #6610f2); margin: 1.25rem 1.5rem 0 1.5rem; }
+
+/* Make hero typed text larger on wide screens */
+@media (min-width: 768px) {
+	header#home h2 { font-size: 1.4rem; }
+}

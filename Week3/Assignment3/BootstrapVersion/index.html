@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Silas Boutwell — Portfolio (Bootstrap)</title>
+  <link rel="icon" href="./assets/img/me.jpg">
+
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600|Poppins:300,400,500" rel="stylesheet">
+
+  <!-- Custom styles (small overrides to keep original look) -->
+  <link rel="stylesheet" href="./assets/style.css">
+</head>
+
+<body class="bg-light">
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-white border-top border-bottom sticky-top">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header / Hero -->
+  <header id="home" class="py-5 bg-white shadow-sm">
+    <div class="container">
+      <div class="d-flex align-items-center gap-4">
+        <img src="./assets/img/me.jpg" alt="Silas Boutwell" class="rounded-circle header-img">
+        <div>
+          <h1 class="mb-0">Silas Boutwell</h1>
+          <div>
+            <h2 class="fw-normal mb-0">I'm a <span id="typed" data-typed-items="developer, coder, designer, musician, songwriter, freelancer"></span><span id="caret" class="caret" aria-hidden="true"></span></h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <p class="lead mb-0">Blending Biblical narrative with personal resilience</p>
+      </div>
+    </div>
+  </header>
+
+
+
+  <main id="main" class="py-5">
+    <div class="container">
+      <!-- About -->
+      <section id="about" class="mb-5">
+        <h2 class="mb-3">About Me</h2>
+        <p>Hello! my name is Silas. I love coding and programming as well as many other things. I first started coding when I was around 12 years old. I launched my first website at 16 and still maintain it today. I also am currently working on making my own app from the ground up. I hope to finish that project soon.</p>
+        <p>I also enjoy music and playing instruments and writing songs. I also love outdoor recreational activities. But what I love most of all is serving God and using my gifts and hard work for Him. I love our church, and I love ministering to people in whatever way I can.</p>
+      </section>
+
+      <!-- Projects -->
+      <section id="projects" class="mb-5">
+        <h2 class="mb-4">Featured Work and Projects</h2>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h3 class="card-title h5">Testimonies</h3>
+                <p class="card-text">Testimonies is a website I created from the ground up. It is a site that I made for our church to be able to put their testimonies on there so it's a lot easier to share them with people. You can view this at <a href="https://testimonies.us" target="_blank" rel="noopener">testimonies.us</a>.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h3 class="card-title h5">App Design</h3>
+                <p class="card-text">Another thing that I am currently working on is designing an app from scratch using React Native. This is currently a work in progress and has a long way to go. See the repo at <a href="https://github.com/SilasBoutwell/GodAndITime" target="_blank" rel="noopener">github.com/SilasBoutwell/GodAndITime</a>.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h3 class="card-title h5">Other fun coding projects</h3>
+                <p class="card-text">I will also include my GitHub profile page if you want to check out any of my other projects. <a href="https://github.com/SilasBoutwell" target="_blank" rel="noopener">github.com/SilasBoutwell</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="mb-5">
+        <h2 class="mb-3">Contact</h2>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h3 class="card-title h5">Let's collaborate or connect!</h3>
+                <p class="mb-1">Email: <a href="mailto:silas@example.com">silas@example.com</a></p>
+                <p>Phone: <a href="tel:1234567890">1234567890</a></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-8">
+            <div class="card h-100">
+              <div class="card-body">
+                <h3 class="card-title h5">Or send a quick message</h3>
+                <form id="contact-form" class="row g-3" method="POST" data-endpoint="">
+                  <div class="col-md-6">
+                    <label for="name" class="form-label">Name</label>
+                    <input id="name" name="name" type="text" class="form-control" required placeholder="Your name">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="email" class="form-label">Email</label>
+                    <input id="email" name="email" type="email" class="form-control" required placeholder="you@example.com">
+                  </div>
+
+                  <div class="col-12">
+                    <label for="subject" class="form-label">Subject</label>
+                    <input id="subject" name="subject" type="text" class="form-control" placeholder="Subject">
+                  </div>
+
+                  <div class="col-12">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea id="message" name="message" rows="6" class="form-control" required placeholder="Write your message..."></textarea>
+                  </div>
+
+                  <div class="col-12 d-flex align-items-center gap-3">
+                    <button type="submit" id="contact-submit" class="btn btn-primary">Send message</button>
+                    <div id="contact-status" role="status" aria-live="polite"></div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="pt-4 mt-4 border-top">
+        <p class="mb-0">© 2025 Silas Boutwell. All rights reserved.</p>
+      </footer>
+    </div>
+  </main>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Typing effect script (kept from original) -->
+  <script>
+    (function () {
+      const typedEl = document.getElementById('typed');
+      const caretEl = document.getElementById('caret');
+      if (typedEl) {
+        const items = (typedEl.getAttribute('data-typed-items') || '')
+          .split(',')
+          .map(s => s.trim())
+          .filter(Boolean);
+
+        const typeSpeed = 110;
+        const backspaceSpeed = 80;
+        const holdDelay = 1400;
+
+        let itemIndex = 0;
+        let charIndex = 0;
+        let deleting = false;
+
+        function tick() {
+          const current = items[itemIndex] || '';
+          if (!deleting) {
+            charIndex = Math.min(charIndex + 1, current.length);
+            typedEl.textContent = current.slice(0, charIndex);
+            if (charIndex === current.length) {
+              caretEl.classList.add('flash');
+              setTimeout(() => {
+                caretEl.classList.remove('flash');
+                setTimeout(() => { deleting = true; setTimeout(tick, backspaceSpeed); }, holdDelay);
+              }, 400);
+              return;
+            }
+            setTimeout(tick, typeSpeed);
+          } else {
+            charIndex = Math.max(charIndex - 1, 0);
+            typedEl.textContent = current.slice(0, charIndex);
+            if (charIndex === 0) {
+              deleting = false;
+              itemIndex = (itemIndex + 1) % items.length;
+              setTimeout(tick, typeSpeed);
+              return;
+            }
+            setTimeout(tick, backspaceSpeed);
+          }
+        }
+
+        setTimeout(tick, 700);
+      }
+    })();
+  </script>
+
+  <!-- Simple contact form handler (mailto fallback) -->
+  <script>
+    (function () {
+      const form = document.getElementById('contact-form');
+      if (form) {
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const fd = new FormData(form);
+          const to = 'silaslee.b@gmail.com';
+          const subject = encodeURIComponent(fd.get('subject') || 'Website contact');
+          const name = fd.get('name') || '';
+          const from = fd.get('email') || '';
+          const message = fd.get('message') || '';
+          const body = encodeURIComponent(`Name: ${name}\nEmail: ${from}\n\n${message}`);
+          window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+        });
+      }
+    })();
+  </script>
+
+</body>
+
+</html>
