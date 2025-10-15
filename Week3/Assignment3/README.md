@@ -78,8 +78,8 @@ This folder contains the Bootstrap-based version of the personal portfolio for W
 
 ### 5) Where to look in this repo
 
-- Custom version: `..\CustomVersion\index.html`.
-- Bootstrap version: `..\BootstrapVersion\index.html`.
+- Custom version: `\CustomVersion\index.html`.
+- Bootstrap version: `\BootstrapVersion\index.html`.
 
 ### 6) Short summary
 
