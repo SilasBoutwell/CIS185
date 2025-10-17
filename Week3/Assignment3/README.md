@@ -1,7 +1,5 @@
 ## Homework Week 3 Assignment 3 Comparison of Bootstrap to Custom
 
-- Responsive Portfolio Page
-
 ### Requirements to complete the Assignment:
 
 - Version 1: Manual Responsive Design
@@ -24,16 +22,16 @@ This folder contains the Bootstrap-based version of the personal portfolio for W
 
 ### 1) Code complexity comparison
 
-- Custom version (Assignment3):
-	- Uses hand-written HTML and CSS (Flexbox/Grid and media queries) to control layout and responsiveness.
+- Custom version:
+	- Uses hand-written HTML and CSS (Flexbox/Grid, but mostly flexbox, and media queries) to control layout and responsiveness.
 	- CSS is bespoke and typically longer because it implements layout, spacing, and component styling from scratch.
 	- Complexity is higher in the CSS as you manage breakpoints, utilities (spacing, alignment), and component states yourself.
 	- Advantages in complexity: fine-grained control, smaller runtime dependencies, and no framework semantics to learn.
 
-- Bootstrap version (`index_bootstrap.html` / `index.html`):
+- Bootstrap version:
 	- Relies on Bootstrap 5 classes (grid, utilities, components) to achieve responsive layouts with far less custom CSS.
 	- Complexity shifts from writing CSS to understanding and applying Bootstrap's class system and utility API.
-	- Less CSS to maintain, but HTML can become verbose with many utility classes.
+	- Less CSS to maintain, but HTML can become verbose with a ton of utility classes.
 
 ### 2) Development time analysis
 
@@ -49,7 +47,7 @@ This folder contains the Bootstrap-based version of the personal portfolio for W
 
 ### 3) Pros and cons
 
-- Custom approach (Assignment3)
+- Custom approach
 	- Pros:
 		- Full control over markup and styles — no framework constraints.
 		- Lighter if you only include minimal CSS and no external framework files.
@@ -59,7 +57,7 @@ This folder contains the Bootstrap-based version of the personal portfolio for W
 		- Higher maintenance burden as the site grows; more CSS to test and refactor.
 		- Possible inconsistency in spacing and components unless you create your own design system.
 
-- Bootstrap approach (BootstrapVersion)
+- Bootstrap approach
 	- Pros:
 		- Fast to build consistent, responsive UIs using the grid and utility classes.
 		- Well-tested components and cross-browser behavior handled by the framework.
@@ -78,24 +76,12 @@ This folder contains the Bootstrap-based version of the personal portfolio for W
 	- If keeping dependencies minimal and the site footprint tiny is a priority.
 	- When learning or demonstrating CSS fundamentals is the main objective (education, assignments focused on CSS skills).
 
-### 5) Practical tips when deciding which to use
+### 5) Where to look in this repo
 
-- Use Bootstrap when:
-	- You need to deliver a polished, responsive layout quickly.
-	- You're comfortable relying on conventions and utility classes.
-	- You want consistent behavior across browsers with less testing.
+- Custom version: `\CustomVersion\index.html`.
+- Bootstrap version: `\BootstrapVersion\index.html`.
 
-- Use custom CSS when:
-	- You need total control over the UI and performance is critical.
-	- The design is unique and not easily approximated by Bootstrap components.
-	- The goal is to learn/practice CSS fundamentals.
-
-### 6) Where to look in this repo
-
-- Custom version (Assignment3): `..\Assignment3\index.html` and `..\Assignment3\assets/` (styles and images).
-- Bootstrap version (this folder): `index_bootstrap.html` (Bootstrap-based markup) and `assets/`.
-
-### 7) Short summary
+### 6) Short summary
 
 - Bootstrap: faster to build and maintain for standard layouts; adds dependency and can produce verbose HTML.
 - Custom CSS: maximum control and smaller dependency footprint; cost is time and maintenance.
