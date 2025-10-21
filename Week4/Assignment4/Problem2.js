@@ -33,17 +33,15 @@ function categorizeLeafColors(leaves) {
 /*
 
 // Test Cases
-if (typeof require !== 'undefined' && require.main === module) {
-    console.log('countLeaves(1) =', countLeaves(1));
-    console.log('countLeaves(2) =', countLeaves(2));
-    console.log('countLeaves(4) =', countLeaves(4));
-    console.log('countLeaves(5) =', countLeaves(5));
+console.log('countLeaves(1) =', countLeaves(1));
+console.log('countLeaves(2) =', countLeaves(2));
+console.log('countLeaves(4) =', countLeaves(4));
+console.log('countLeaves(5) =', countLeaves(5));
 
-    console.log('categorizeLeafColors(["red","yellow","red","brown"]) =',
-        categorizeLeafColors(["red", "yellow", "red", "brown"]));
-    console.log('categorizeLeafColors(["orange","orange","orange"]) =',
-        categorizeLeafColors(["orange", "orange", "orange"]));
-    console.log('categorizeLeafColors([]) =', categorizeLeafColors([]));
-}
+console.log('categorizeLeafColors(["red","yellow","red","brown"]) =',
+categorizeLeafColors(["red", "yellow", "red", "brown"]));
+console.log('categorizeLeafColors(["orange","orange","orange"]) =',
+categorizeLeafColors(["orange", "orange", "orange"]));
+console.log('categorizeLeafColors([]) =', categorizeLeafColors([]));
 
 */
