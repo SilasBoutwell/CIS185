@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Creative Pulse Survey</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="survey-wrapper">
+    <h1>🎨 Creative Pulse Survey</h1>
+    <p style="text-align:center;">Tell us how you express yourself</p>
+
+    <form>
+      <div class="form-content">
+        <div>
+          <h2>What's your favorite creative outlet?</h2>
+          <input type="text" name="q1" required />
+        </div>
+        <div>
+          <h2>How often do you create?</h2>
+          <select name="q2" required>
+            <option value="">Choose one</option>
+            <option>Daily</option>
+            <option>Weekly</option>
+            <option>Monthly</option>
+          </select>
+        </div>
+        <div>
+          <h2>Rate your creative confidence</h2>
+          <input type="range" name="q3" min="0" max="10" />
+        </div>
+        <div>
+          <h2>Describe your creative process</h2>
+          <textarea name="q4" required></textarea>
+        </div>
+        <div>
+          <h2>Solo or group projects?</h2>
+          <label><input type="radio" name="q5" value="solo" /> Solo</label>
+          <label><input type="radio" name="q5" value="group" /> Group</label>
+        </div>
+        <div>
+          <h2>Which tools do you use?</h2>
+          <label><input type="checkbox" name="q6" value="finalcut" /> Final Cut Pro</label>
+          <label><input type="checkbox" name="q6" value="logic" /> Logic Pro</label>
+          <label><input type="checkbox" name="q6" value="vscode" /> VS Code</label>
+        </div>
+        <div>
+          <h2>Favorite time to create?</h2>
+          <input type="time" name="q7" />
+        </div>
+        <div>
+          <h2>Color that represents your style</h2>
+          <input type="color" name="q8" id="styleColor" required />
+        </div>
+        <div id="colorContainer">
+          <h2 id="colorTitle">Your chosen color:</h2>
+          <div id="colorPreview"></div>
+        </div>
+        <div>
+          <h2>Upload a recent project</h2>
+          <input type="file" name="q9" required />
+        </div>
+        <div>
+          <h2>Hours per week creating?</h2>
+          <input type="number" name="q10" min="0" required />
+        </div>
+        <div>
+          <h2>Dream creative job?</h2>
+          <input type="text" name="q11" required />
+        </div>
+        <div>
+          <h2>Do you share your work online?</h2>
+          <select name="q12" required>
+            <option value="">Choose one</option>
+            <option>Yes</option>
+            <option>No</option>
+            <option>Sometimes</option>
+          </select>
+        </div>
+        <div>
+          <h2>Favorite medium?</h2>
+          <input type="text" name="q13" />
+        </div>
+        <div>
+          <h2>Do you collaborate?</h2>
+          <label><input type="radio" name="q14" value="yes" /> Yes</label>
+          <label><input type="radio" name="q14" value="no" /> No</label>
+        </div>
+        <div>
+          <h2>What inspires you?</h2>
+          <textarea name="q15"></textarea>
+        </div>
+        <div>
+          <h2>Date you felt most creative</h2>
+          <input type="date" name="q16" />
+        </div>
+        <div>
+          <h2>Analog or digital tools?</h2>
+          <select name="q17" required>
+            <option value="">Choose one</option>
+            <option>Analog</option>
+            <option>Digital</option>
+            <option>Hybrid</option>
+          </select>
+        </div>
+        <div>
+          <h2>Biggest creative challenge?</h2>
+          <textarea name="q18"></textarea>
+        </div>
+        <div>
+          <h2>Do you monetize your creativity?</h2>
+          <label><input type="radio" name="q19" value="yes" /> Yes</label>
+          <label><input type="radio" name="q19" value="no" /> No</label>
+        </div>
+        <div>
+          <h2>Would you like feedback?</h2>
+          <label><input type="checkbox" id="feedbackToggle" name="q20" value="yes" /> Yes, I'd love that!</label>
+          <div id="emailField" style="display:none; margin-top:1rem;">
+            <label for="email">Your email address:</label>
+            <input type="email" name="email" id="email" />
+          </div>
+        </div>
+      </div>
+      <button type="submit">Submit ✅</button>
+    </form>
+  </div>
+</body>
+
+<script src="main.js"></script>
+
+</html>
