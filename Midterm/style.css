@@ -103,8 +103,12 @@ a {
 }
 
 .repo-card {
-  background: #fafafa;
-  margin: 1.5rem 0;
+  background: linear-gradient(
+    to right, 
+    rgb(249, 249, 249), 
+    color-mix(in srgb, var(--profile-color), white 70%)
+  );
+  margin-top: 1.5rem;
   padding: 1rem;
   border-left: 4px solid var(--profile-color);
   border-radius: 8px;

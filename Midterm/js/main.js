@@ -27,14 +27,11 @@ async function fetchProfile() {
     profileImg.alt = profile.login;
     profileImg.className = 'profile-img';
     profileImg.crossOrigin = 'anonymous';
-
-    // Append image to DOM first so it's visible and renderable
     profileDiv.appendChild(profileImg);
 
-    // Wait until image is fully loaded and rendered before extracting color
     profileImg.addEventListener('load', () => {
       try {
-        const colorThief = new window.ColorThief(); // Use window.ColorThief to ensure global access
+        const colorThief = new window.ColorThief();
         if (profileImg.complete && profileImg.naturalHeight !== 0) {
           const dominantColor = colorThief.getColor(profileImg);
           const profileColor = `rgb(${dominantColor.join(',')})`;
@@ -59,7 +56,7 @@ async function fetchProfile() {
             </p>
           </div>
         </div>
-        <div class="bio-container"><p class="bio">${profile.bio || 'No bio available.'}</p></div>
+        <div class="bio-container"><p class="bio">Bio:</p><p class="bio">${profile.bio || 'No bio available.'}</p></div>
     `;
 
     const reposRes = await fetch(`https://api.github.com/users/${username}/repos`);
