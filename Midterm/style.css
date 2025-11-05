@@ -1,0 +1,108 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  font-family: 'Work Sans', sans-serif;
+  background: #f4f4f4;
+  margin: 0;
+  padding: 2rem;
+  color: #333;
+}
+
+.container {
+  max-width: 700px;
+  margin: auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+.title {
+  font-size: 2rem;
+  font-family: 'Inria Sans', sans-serif;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+  align-items: space-between;
+  margin-bottom: 2rem;
+}
+
+input {
+  width: 70%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  margin-left: 1rem;
+  font-size: 1rem;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+#profile img {
+  border-radius: 50%;
+  width: 100px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.profile-header {
+  display: inline-block;
+  margin-left: 2rem;
+  vertical-align: middle;
+}
+
+.profile-name {
+  font-size: 2rem;
+}
+
+.social {
+  display: flex;
+  margin: 1rem 0;
+  align-items: center;
+}
+
+.stats {
+  display: inline-block;
+  font-weight: 400;
+}
+
+.bio {
+  margin: 1rem 0;
+}
+
+#repos {
+  margin-top: 2rem;
+}
+
+.repo-card {
+  background: #fafafa;
+  margin: 1rem 0;
+  padding: 1rem;
+  border-left: 4px solid #333;
+  border-radius: 8px;
+}
+
+.description {
+  margin: 1rem 0;
+  color: #555;
+}

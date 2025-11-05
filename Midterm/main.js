@@ -1,0 +1,69 @@
+window.onload = function () {
+  document.getElementById('username').focus();
+  document.getElementById('username').value = 'SilasBoutwell'; // For testing purposes only; remove or comment out for production
+  document.getElementById('submit-btn').click();
+}
+
+async function fetchProfile() {
+  const username = document.getElementById('username').value;
+  const profileDiv = document.getElementById('profile');
+  const reposDiv = document.getElementById('repos');
+
+  // Clear input field
+  document.getElementById('username').value = '';
+
+  profileDiv.innerHTML = '';
+  reposDiv.innerHTML = '';
+
+  try {
+    const profileRes = await fetch(`https://api.github.com/users/${username}`);
+    const profile = await profileRes.json();
+
+    if (profile.message === 'Not Found') {
+      profileDiv.innerHTML = `<p>User not found.</p>`;
+      return;
+    }
+
+    profileDiv.innerHTML = `
+        <img src="${profile.avatar_url}" alt="${profile.login}" class="profile-img" />
+        <div class="profile-header">
+          <h2 class="profile-name">${profile.name || profile.login}</h2>
+          <div class="social">
+            <p class="stats">
+              <i class="fa-regular fa-user"></i>
+              <strong>${profile.followers}</strong> Followers &middot; <strong>${profile.following}</strong> Following
+            </p>
+          </div>
+        </div>
+        <p class="bio">${profile.bio || 'No bio available.'}</p>
+    `;
+
+    const reposRes = await fetch(`https://api.github.com/users/${username}/repos`);
+    const repos = await reposRes.json();
+
+    repos.forEach(repo => {
+      reposDiv.innerHTML += `
+        <a href="${repo.html_url}" target="_blank">
+          <div class="repo-card">
+            <h3>${repo.name}</h3>
+            <div class="description">
+              ${repo.description ? '<p>Description: </p><p>' + repo.description + '</p>' : ''}
+            </div>
+            <p>
+              <i class="fa-solid fa-star" style="color: gold;"></i> ${repo.stargazers_count} | 
+              <i class="fa-solid fa-code-fork" style="color: #777;"></i> ${repo.forks_count}
+            </p>
+          </div>
+        </a>
+      `;
+    });
+  } catch (error) {
+    profileDiv.innerHTML = `<p>Error fetching data.</p>`;
+  }
+}
+
+document.getElementById('username').addEventListener('keypress', function (e) {
+  if (e.key === 'Enter') {
+    fetchProfile();
+  }
+});
