@@ -1,7 +1,5 @@
 window.onload = function () {
   document.getElementById('username').focus();
-  document.getElementById('username').value = 'SilasBoutwell'; // For testing purposes only; remove or comment out for production
-  document.getElementById('submit-btn').click();
 }
 
 async function fetchProfile() {
@@ -24,8 +22,34 @@ async function fetchProfile() {
       return;
     }
 
+    const profileImg = document.createElement('img');
+    profileImg.src = profile.avatar_url;
+    profileImg.alt = profile.login;
+    profileImg.className = 'profile-img';
+    profileImg.crossOrigin = 'anonymous';
+
+    // Append image to DOM first so it's visible and renderable
+    profileDiv.appendChild(profileImg);
+
+    // Wait until image is fully loaded and rendered before extracting color
+    profileImg.addEventListener('load', () => {
+      try {
+        const colorThief = new window.ColorThief(); // Use window.ColorThief to ensure global access
+        if (profileImg.complete && profileImg.naturalHeight !== 0) {
+          const dominantColor = colorThief.getColor(profileImg);
+          const profileColor = `rgb(${dominantColor.join(',')})`;
+          document.documentElement.style.setProperty('--profile-color', profileColor);
+          console.log('Extracted color:', profileColor);
+        } else {
+          console.warn('Image not fully loaded or readable');
+        }
+      } catch (err) {
+        console.error('Color extraction failed:', err);
+      }
+    });
+
     profileDiv.innerHTML = `
-        <img src="${profile.avatar_url}" alt="${profile.login}" class="profile-img" />
+        <img src="${profile.avatar_url}" alt="${profile.login}" class="profile-img" crossorigin="anonymous" />
         <div class="profile-header">
           <h2 class="profile-name">${profile.name || profile.login}</h2>
           <div class="social">
@@ -35,7 +59,7 @@ async function fetchProfile() {
             </p>
           </div>
         </div>
-        <p class="bio">${profile.bio || 'No bio available.'}</p>
+        <div class="bio-container"><p class="bio">${profile.bio || 'No bio available.'}</p></div>
     `;
 
     const reposRes = await fetch(`https://api.github.com/users/${username}/repos`);
@@ -50,7 +74,7 @@ async function fetchProfile() {
               ${repo.description ? '<p>Description: </p><p>' + repo.description + '</p>' : ''}
             </div>
             <p>
-              <i class="fa-solid fa-star" style="color: gold;"></i> ${repo.stargazers_count} | 
+              <i class="fa-solid fa-star" style="color: gold;"></i> ${repo.stargazers_count} |  
               <i class="fa-solid fa-code-fork" style="color: #777;"></i> ${repo.forks_count}
             </p>
           </div>

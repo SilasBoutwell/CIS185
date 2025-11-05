@@ -3,6 +3,10 @@
   margin: 0;
 }
 
+:root {
+  --profile-color: #333;
+}
+
 body {
   font-family: 'Work Sans', sans-serif;
   background: #f4f4f4;
@@ -77,7 +81,6 @@ a {
 
 .social {
   display: flex;
-  margin: 1rem 0;
   align-items: center;
 }
 
@@ -86,8 +89,13 @@ a {
   font-weight: 400;
 }
 
+.bio-container {
+  margin: 1.5rem 0;
+}
+
 .bio {
-  margin: 1rem 0;
+  font-style: italic;
+  color: #666;
 }
 
 #repos {
@@ -96,9 +104,9 @@ a {
 
 .repo-card {
   background: #fafafa;
-  margin: 1rem 0;
+  margin: 1.5rem 0;
   padding: 1rem;
-  border-left: 4px solid #333;
+  border-left: 4px solid var(--profile-color);
   border-radius: 8px;
 }
 
