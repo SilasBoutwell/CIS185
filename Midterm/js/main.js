@@ -106,7 +106,7 @@ function insightsToggle(activeSection, event) {
   }
 
   const insightsBody = document.getElementById('insightsBody');
-  insightsBody.innerHTML = `<h2>${activeSection === 'insights' ? 'Insights' : 'History'}</h2>`;
+  insightsBody.innerHTML = `<h2 class="body-title">${activeSection === 'insights' ? 'Insights' : 'History'}</h2>`;
 }
 
 // Toggle active nav link
