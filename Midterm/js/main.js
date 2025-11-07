@@ -5,7 +5,7 @@ window.onload = function () {
   document.getElementById('username').focus();
 }
 window.addEventListener('DOMContentLoaded', () => {
-  insightsToggle('insights', { preventDefault: () => {} });
+  insightsToggle('insights', { preventDefault: () => { } });
 });
 
 // Fetch GitHub profile and repositories
@@ -94,21 +94,35 @@ async function fetchProfile() {
 function insightsToggle(activeSection, event) {
   event.preventDefault();
 
-  document.getElementById(activeSection).setAttribute('class', 'active');
-  const otherSection = activeSection === 'insights' ? 'history' : 'insights';
-  document.getElementById(otherSection).setAttribute('class', '');
+  const insightsLink = document.getElementById('insights');
+  const historyLink = document.getElementById('history');
 
-  insightsBody = document.getElementById('insightsBody');
   if (activeSection === 'insights') {
-    insightsBody.innerHTML = `
-      <h2>Insights</h2>
-    `;
+    insightsLink.classList.add('active');
+    historyLink.classList.remove('active');
   } else {
-    insightsBody.innerHTML = `
-      <h2>History</h2>
-    `;
+    historyLink.classList.add('active');
+    insightsLink.classList.remove('active');
   }
+
+  const insightsBody = document.getElementById('insightsBody');
+  insightsBody.innerHTML = `<h2>${activeSection === 'insights' ? 'Insights' : 'History'}</h2>`;
 }
+
+// Toggle active nav link
+
+const currentPath = window.location.pathname.split('/').pop();
+const navLinks = document.querySelectorAll('.nav-container a');
+
+navLinks.forEach(link => {
+  const linkPath = link.getAttribute('href');
+  if (linkPath === currentPath) {
+    link.classList.add('active');
+  } else {
+    link.classList.remove('active');
+  }
+});
+
 
 // Event listener for Enter key press
 document.getElementById('username').addEventListener('keypress', function (e) {

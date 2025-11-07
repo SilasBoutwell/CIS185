@@ -18,7 +18,7 @@ nav {
   width: 200px;
   height: 100%;
   background-color: #fff;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 3px 0 8px rgba(0, 0, 0, 0.1);
   padding: 2rem 1rem;
 }
 
@@ -30,10 +30,10 @@ nav {
 }
 
 .nav-container a {
-  color: #333;
   position: relative;
-  text-decoration: none;
   padding-bottom: 4px;
+  text-decoration: none;
+  color: #333;
 }
 
 .nav-container a::after {
@@ -45,6 +45,10 @@ nav {
   width: 0;
   background-color: #333;
   transition: width 0.3s ease;
+}
+
+.nav-container a.active::after {
+  width: 70%;
 }
 
 .nav-container a:hover::after {
@@ -154,6 +158,16 @@ a {
   padding: 1rem;
   border-left: 4px solid var(--profile-color);
   border-radius: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+  text-rendering: optimizeLegibility;
+  will-change: transform;
+  transform-style: preserve-3d;
+}
+
+.repo-card:hover {
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
+  transform: scale(1.005) translateY(-2px);
 }
 
 .description {
@@ -161,6 +175,32 @@ a {
   color: #555;
 }
 
+/* About Page */
+.body-title {
+  font-family: 'Inria Sans', sans-serif;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  padding: 0 2rem .1rem 0;
+  position: relative;
+  display: inline-block;
+}
+
+.body-title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 25%;
+  height: 2px;
+  background-color: #333;
+  transition: width 0.3s ease;
+}
+
+.body-title:hover::after {
+  width: 100%;
+}
+
+/* Insights Page */
 .insights-links {
   display: flex;
   flex-direction: row;
@@ -169,7 +209,7 @@ a {
 
 .insights-links a {
   position: relative;
-  padding: 0.5rem 2rem;
+  padding: 0.3rem 1.8rem;
   text-decoration: none;
   color: #333;
 }
@@ -180,14 +220,18 @@ a {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 60%;
+  width: 0;
   height: 2px;
   background-color: #333;
   transition: width 0.3s ease;
 }
 
+.insights-links a.active::after {
+  width: 70%;
+}
+
 .insights-links a:hover::after {
-  width: 95%;
+  width: 100%;
 }
 
 .insights {
