@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>GitHub Profile Explorer</title>
+  <title>GitHub Profile Explorer | Insights</title>
 
   <!-- Styles and Fonts -->
   <link rel="stylesheet" href="style.css">
@@ -27,14 +27,19 @@
   <main>
     <div class="container">
       <div class="title">
-        <h1>GitHub Profile Explorer</h1>
+        <h1>Search Insights</h1>
       </div>
-      <div class="search">
+      <!-- <div class="search">
         <input type="text" id="username" placeholder="Enter GitHub username" />
         <button id="submit-btn" onclick="fetchProfile()">Search</button>
       </div>
       <div id="profile"></div>
-      <div id="repos"></div>
+      <div id="repos"></div> -->
+      <div class="insights-links">
+        <a href="#" class="active" id="insights" onclick="insightsToggle('insights', event)">Insights</a>
+        <a href="#" id="history" onclick="insightsToggle('history', event)">History</a>
+      </div>
+      <div id="insightsBody" class="insights"></div>
     </div>
   </main>
 </body>

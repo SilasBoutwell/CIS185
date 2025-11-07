@@ -1,7 +1,14 @@
+// main.js
+
+// Page load actions
 window.onload = function () {
   document.getElementById('username').focus();
 }
+window.addEventListener('DOMContentLoaded', () => {
+  insightsToggle('insights', { preventDefault: () => {} });
+});
 
+// Fetch GitHub profile and repositories
 async function fetchProfile() {
   const username = document.getElementById('username').value;
   const profileDiv = document.getElementById('profile');
@@ -83,6 +90,27 @@ async function fetchProfile() {
   }
 }
 
+// Toggle insights section
+function insightsToggle(activeSection, event) {
+  event.preventDefault();
+
+  document.getElementById(activeSection).setAttribute('class', 'active');
+  const otherSection = activeSection === 'insights' ? 'history' : 'insights';
+  document.getElementById(otherSection).setAttribute('class', '');
+
+  insightsBody = document.getElementById('insightsBody');
+  if (activeSection === 'insights') {
+    insightsBody.innerHTML = `
+      <h2>Insights</h2>
+    `;
+  } else {
+    insightsBody.innerHTML = `
+      <h2>History</h2>
+    `;
+  }
+}
+
+// Event listener for Enter key press
 document.getElementById('username').addEventListener('keypress', function (e) {
   if (e.key === 'Enter') {
     fetchProfile();
