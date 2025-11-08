@@ -283,5 +283,3 @@ function getProfileColor(username) {
   const colorMap = JSON.parse(localStorage.getItem("profileColors")) || {};
   return colorMap[username] || "#ccc"; // fallback color
 }
-
-
