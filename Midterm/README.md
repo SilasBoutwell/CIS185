@@ -30,24 +30,24 @@ This tool is useful for students, developers, and recruiters who want a quick sn
 ## 5. File Structure
 Project files in this folder:
 
-├── index.html                   # Homepage and main search UI
-├── about.html                   # About page and usage tips
-├── insights.html                # Insights and search history UI
-├── features.html                # Describes features and UI behavior
-├── README.md                    # Project overview and usage instructions
-├── .gitignore                   # (optional) Git exclusions  
-├── assets/                      # Static assets and source files
-│   ├── css/                     # Stylesheets
-│   │   └── style.css            # Main stylesheet (controls layout, theme variable --profile-color)
-│   │
-│   ├── js/                      # JavaScript logic
-│   │   ├── main.js              # Application logic
-│   │   └── color-thief.umd.js   # Color Thief library used for extracting dominant avatar color
-│   │
-│   └── img/                     # Image assets
-│       └── favicon.png          # Favicon for the site
-│   │
-│   └── flowchart.drawio.svg     # Flowchart for design and ideas
+├── index.html                   &emsp;# Homepage and main search UI  
+├── about.html                   &emsp;# About page and usage tips  
+├── insights.html                &emsp;# Insights and search history UI  
+├── features.html                &emsp;# Describes features and UI behavior  
+├── README.md                    &emsp;# Project overview and usage instructions  
+├── .gitignore                   &emsp;# (optional) Git exclusions  
+├── assets/                      &emsp;# Static assets and source files  
+│   &ensp;├── css/                     &emsp;# Stylesheets  
+│   &ensp;│   &ensp;└── style.css            &emsp;# Main stylesheet (controls layout, theme variable --profile-color)  
+│   &ensp;│  
+│   &ensp;├── js/                      &emsp;# JavaScript logic  
+│   &ensp;│   &ensp;├── main.js              &emsp;# Application logic  
+│   &ensp;│   &ensp;└── color-thief.umd.js   &emsp;# Color Thief library used for extracting dominant avatar color  
+│   &ensp;│  
+│   &ensp;└── img/                     &emsp;# Image assets  
+│   &ensp;│   &ensp;└── favicon.png          &emsp;# Favicon for the site  
+│   &ensp;│  
+│   &ensp;└── flowchart.drawio.svg     &emsp;# Flowchart for design and ideas  
 
 ## 6. Challenges Faced
 - Dynamic color extraction required using the avatar image with `crossOrigin` to avoid tainting the canvas. Handling images that fail to load or return neutral (gray) palettes was addressed by falling back to a secondary palette color or a default theme color, which was necessary UI and accesability purposes.
@@ -73,21 +73,7 @@ about page, features page, readme, file structure help, favicon generation
 ---
 
 ## Flowchart
-Simple inline image
 ![Flowchart](./assets/flowchart.drawio.svg)
-
-Clickable, sized image (opens full-size on click)
-<a href="./assets/flowchart.drawio.svg" target="_blank" rel="noopener">
-  <img src="./assets/flowchart.drawio.svg" alt="Design flowchart" width="800" />
-</a>
-
-Collapsible view to avoid large README length
-<details>
-<summary>View flowchart</summary>
-
-![Flowchart](./assets/flowchart.drawio.svg)
-
-</details>
 
 ## How to view this site locally
 The easiest way is to open `index.html` in your browser.
