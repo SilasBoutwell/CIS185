@@ -276,11 +276,23 @@ a {
 }
 
 .history-card {
-  background: #f9f9f9;
-  border-left: 5px solid var(--profile-color);
+  background: linear-gradient(to right,
+      rgb(249, 249, 249),
+      color-mix(in srgb, var(--profile-color), white 70%));
+  border-left: 4px solid var(--profile-color);  
+  margin-top: 1.5rem;
   padding: 1rem;
-  margin-bottom: 1rem;
   border-radius: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+  text-rendering: optimizeLegibility;
+  will-change: transform;
+  transform-style: preserve-3d;
+}
+
+.history-card:hover {
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
+  transform: scale(1.005) translateY(-2px);
 }
 
 .history-card h3 {
@@ -288,7 +300,7 @@ a {
 }
 
 .history-card button {
-  background: var(--profile-color);
+  background: #333;
   color: white;
   border: none;
   padding: 0.5rem 1rem;

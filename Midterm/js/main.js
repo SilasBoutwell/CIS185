@@ -22,10 +22,10 @@ window.addEventListener('DOMContentLoaded', () => {
         fetchProfile(userParam);
       }, 50);
     } else {
-      insightsToggle('insights', { preventDefault: () => {} });
+      insightsToggle('insights', { preventDefault: () => { } });
     }
   }
-  insightsToggle('insights', { preventDefault: () => {} });
+  insightsToggle('insights', { preventDefault: () => { } });
 });
 
 // Fetch GitHub profile and repositories
@@ -64,7 +64,7 @@ async function fetchProfile(usernameParam) {
           const profileColor = `rgb(${dominantColor.join(',')})`;
           document.documentElement.style.setProperty('--profile-color', profileColor);
           console.log('Extracted color:', profileColor);
-          saveProfileColor(profileColor);
+          saveProfileColor(profile.login, profileColor);
         } else {
           console.warn('Image not fully loaded or readable');
         }
@@ -135,17 +135,29 @@ function loadHistory() {
 
   if (history.length === 0) {
     historyList.innerHTML = `<p>No history yet. Search a profile to get started.</p>`;
+    localStorage.setItem("profileColor", "#333");
+    document.documentElement.style.setProperty("--profile-color", "#333");
     return;
   }
 
   history.forEach(username => {
+    const color = getProfileColor(username);
+
+    const link = document.createElement("a");
+    link.href = `index.html?user=${username}`;
+    link.className = "history-link-wrapper";
+
     const card = document.createElement("div");
     card.className = "history-card";
+    card.style.background = `linear-gradient(to right, rgb(249, 249, 249), color-mix(in srgb, ${color}, white 70%))`;
+    card.style.borderLeft = `4px solid ${color}`;
+
     card.innerHTML = `
-      <h3>${username}</h3>
-      <a href="index.html?user=${username}" class="history-btn">View Profile</a>
-    `;
-    historyList.appendChild(card);
+    <p class="history-username">${username}</p>
+  `;
+
+    link.appendChild(card);
+    historyList.appendChild(link);
   });
 }
 
@@ -248,8 +260,19 @@ document.getElementById('username').addEventListener('keypress', function (e) {
   }
 });
 
-// Save color
-function saveProfileColor(color) {
+// Save color and load color
+function saveProfileColor(username, color) {
+  let colorMap = JSON.parse(localStorage.getItem("profileColors")) || {};
+  colorMap[username] = color;
+  localStorage.setItem("profileColors", JSON.stringify(colorMap));
+
   localStorage.setItem("profileColor", color);
   document.documentElement.style.setProperty("--profile-color", color);
 }
+
+function getProfileColor(username) {
+  const colorMap = JSON.parse(localStorage.getItem("profileColors")) || {};
+  return colorMap[username] || "#ccc"; // fallback color
+}
+
+
