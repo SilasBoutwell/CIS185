@@ -299,19 +299,6 @@ a {
   margin: 0 0 0.5rem;
 }
 
-.history-card button {
-  background: #333;
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.history-card button:hover {
-  opacity: 0.9;
-}
-
 .section-header {
   display: flex;
   justify-content: space-between;

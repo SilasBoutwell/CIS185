@@ -60,10 +60,22 @@ async function fetchProfile(usernameParam) {
       try {
         const colorThief = new window.ColorThief();
         if (profileImg.complete && profileImg.naturalHeight !== 0) {
-          const dominantColor = colorThief.getColor(profileImg);
-          const profileColor = `rgb(${dominantColor.join(',')})`;
+          const primary = colorThief.getColor(profileImg); // [r, g, b]
+          const palette = colorThief.getPalette(profileImg, 5); // get more options
+          const secondary = palette[1] || palette[0]; // fallback if palette is short
+
+          function isGray([r, g, b]) {
+            const maxDiff = 12;
+            const isNeutral = Math.abs(r - g) < maxDiff && Math.abs(g - b) < maxDiff;
+            const brightness = (r + g + b) / 3;
+            return isNeutral && brightness > 100; 
+          }
+
+          const chosen = isGray(primary) ? secondary : primary;
+          const profileColor = `rgb(${chosen.join(',')})`;
+
           document.documentElement.style.setProperty('--profile-color', profileColor);
-          console.log('Extracted color:', profileColor);
+          console.log('Chosen color:', profileColor);
           saveProfileColor(profile.login, profileColor);
         } else {
           console.warn('Image not fully loaded or readable');
@@ -135,8 +147,6 @@ function loadHistory() {
 
   if (history.length === 0) {
     historyList.innerHTML = `<p>No history yet. Search a profile to get started.</p>`;
-    localStorage.setItem("profileColor", "#333");
-    document.documentElement.style.setProperty("--profile-color", "#333");
     return;
   }
 
@@ -175,11 +185,10 @@ function clearHistory() {
   localStorage.removeItem("lastProfileData");
   loadHistory();
 
-  const insightsBody = document.getElementById("insightsBody");
-  if (insightsBody) {
-    insightsToggle('insights', { preventDefault: () => { } });
-    insightsBody.innerHTML = `<h2 class="body-title">Insights</h2><p>No insights available. Search a profile to get started.</p>`;
-  }
+  localStorage.setItem("profileColor", "#333");
+  document.documentElement.style.setProperty("--profile-color", "#333");
+
+  insightsToggle('insights', { preventDefault: () => { } });
 }
 
 function loadInsights() {
