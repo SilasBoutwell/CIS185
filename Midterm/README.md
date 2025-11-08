@@ -46,6 +46,8 @@ Project files in this folder:
 │   │
 │   └── img/                     # Image assets
 │       └── favicon.png          # Favicon for the site
+│   │
+│   └── flowchart.drawio.svg     # Flowchart for design and ideas
 
 ## 6. Challenges Faced
 - Dynamic color extraction required using the avatar image with `crossOrigin` to avoid tainting the canvas. Handling images that fail to load or return neutral (gray) palettes was addressed by falling back to a secondary palette color or a default theme color, which was necessary UI and accesability purposes.
@@ -69,6 +71,23 @@ about page, features page, readme, file structure help, favicon generation
 - GitHub API used for public profile and repository data (https://docs.github.com/en/rest)
 
 ---
+
+## Flowchart
+Simple inline image
+![Flowchart](./assets/flowchart.drawio.svg)
+
+Clickable, sized image (opens full-size on click)
+<a href="./assets/flowchart.drawio.svg" target="_blank" rel="noopener">
+  <img src="./assets/flowchart.drawio.svg" alt="Design flowchart" width="800" />
+</a>
+
+Collapsible view to avoid large README length
+<details>
+<summary>View flowchart</summary>
+
+![Flowchart](./assets/flowchart.drawio.svg)
+
+</details>
 
 ## How to view this site locally
 The easiest way is to open `index.html` in your browser.
