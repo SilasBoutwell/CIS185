@@ -62,13 +62,13 @@ async function fetchProfile(usernameParam) {
         if (profileImg.complete && profileImg.naturalHeight !== 0) {
           const primary = colorThief.getColor(profileImg); // [r, g, b]
           const palette = colorThief.getPalette(profileImg, 5); // get more options
-          const secondary = palette[1] || palette[0]; // fallback if palette is short
+          const secondary = palette[1] || palette[0]; // fallback if pallete is short
 
           function isGray([r, g, b]) {
             const maxDiff = 12;
             const isNeutral = Math.abs(r - g) < maxDiff && Math.abs(g - b) < maxDiff;
             const brightness = (r + g + b) / 3;
-            return isNeutral && brightness > 100; 
+            return isNeutral && brightness > 100;
           }
 
           const chosen = isGray(primary) ? secondary : primary;
@@ -207,15 +207,61 @@ function loadInsights() {
         <h3>${data.name || data.login}</h3>
         <p class="insights-username">@${data.login}</p>
       </div>
+
       <div class="insights-stats">
-        <div><strong>Repos:</strong> ${data.public_repos}</div>
+        <div><strong>Public Repos:</strong> ${data.public_repos}</div>
         <div><strong>Followers:</strong> ${data.followers}</div>
-        <div><strong>Created:</strong> ${new Date(data.created_at).toLocaleDateString()}</div>
         <div><strong>Following:</strong> ${data.following}</div>
+        <div><strong>Follower Ratio:</strong> ${(data.followers / (data.following || 1)).toFixed(2)}</div>
+        <div><strong>Account Age:</strong> ${Math.floor((Date.now() - new Date(data.created_at)) / (1000 * 60 * 60 * 24 * 365))} years</div>
       </div>
+
       <p class="insights-bio">${data.bio || 'No bio available.'}</p>
+
+      <div class="insights-api-info">
+        <h4>API Data Pulled</h4>
+          <div class="api-badge-group">
+            <span class="api-badge">login</span>
+            <span class="api-badge">name</span>
+            <span class="api-badge">avatar_url</span>
+            <span class="api-badge">public_repos</span>
+            <span class="api-badge">followers</span>
+            <span class="api-badge">following</span>
+            <span class="api-badge">created_at</span>
+            <span class="api-badge">bio</span>
+          </div>
+
+        <h4>Other Available Fields</h4>
+          <div class="api-badge-group">
+            <span class="api-badge">location</span>
+            <span class="api-badge">email</span>
+            <span class="api-badge">hireable</span>
+            <span class="api-badge">twitter_username</span>
+            <span class="api-badge">blog</span>
+            <span class="api-badge">company</span>
+            <span class="api-badge">html_url</span>
+            <span class="api-badge">site_admin</span>
+          </div>
+
+        <h4>How We Use This</h4>
+        <p>We extract key profile data using the GitHub REST API (<code>/users/` + '${username}' + `</code>) and apply it to the UI for personalized insights. Color Thief is used to theme the card based on the primary color of the avatar.</p>
+      </div>
+
+      <div class="insights-code-example">
+        <h4>Code Example</h4>
+        <pre><code class="language-json">
+GET https://api.github.com/users/${data.login}
+  {
+    "login": "${data.login}",
+    "public_repos": ${data.public_repos},
+    "followers": ${data.followers},
+    "following": ${data.following},
+    "created_at": "${data.created_at}"
+  }
+        </code></pre>
+      </div>
     </div>
-  `;
+`;
 }
 
 // Toggle insights section

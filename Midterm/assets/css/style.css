@@ -245,36 +245,104 @@ a {
 
 .insights-card {
   background: #fff;
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  color: var(--profile-color);
-  max-width: 600px;
-  margin: auto;
+  border: 1px solid #ddd;
+  border-left: 4px solid var(--profile-color, #333);
+  border-radius: 6px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  font-family: system-ui, sans-serif;
+  color: #222;
+  transition: box-shadow 0.3s ease;
 }
 
 .insights-header {
-  text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
 
 .insights-avatar {
-  width: 80px;
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
-  margin-bottom: 0.5rem;
+  border: 2px solid var(--profile-color, #444);
+  object-fit: cover;
+}
+
+.insights-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--profile-color, #333);
+}
+
+.insights-username {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #666;
 }
 
 .insights-stats {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.5rem 1rem;
   margin: 1rem 0;
+  font-size: 0.95rem;
+}
+
+.insights-stats div {
+  background: #f9f9f9;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  border: 1px solid #eee;
 }
 
 .insights-bio {
   font-style: italic;
-  text-align: center;
+  color: #444;
+  margin: 1rem 0;
 }
 
+.insights-api-info h4,
+.insights-code-example h4 {
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  color: var(--profile-color, #333);
+  border-bottom: 2px solid #eee;
+  padding-bottom: 0.25rem;
+}
+
+.api-badge-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.5rem 0 1.5rem;
+}
+
+.api-badge {
+  background: #f0f0f0;
+  color: #333;
+  font-size: 0.85rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-family: monospace;
+  border: 1px solid #e0e0e0;
+  white-space: nowrap;
+}
+
+.insights-code-example pre {
+  background: #f6f8fa;
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  border: 1px solid #e1e4e8;
+  color: #24292e;
+}
+
+/* History section */
 .history-card {
   background: linear-gradient(to right,
       rgb(249, 249, 249),
