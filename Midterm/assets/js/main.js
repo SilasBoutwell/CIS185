@@ -86,7 +86,7 @@ async function fetchProfile(usernameParam) {
     });
 
     profileDiv.innerHTML = `
-        <img src="${profile.avatar_url}" alt="${profile.login}" class="profile-img" crossorigin="anonymous" />
+        <div class="img-container"><img src="${profile.avatar_url}" alt="${profile.login}" class="profile-img" crossorigin="anonymous" /></div>
         <div class="profile-header">
           <h2 class="profile-name">${profile.name || profile.login}</h2>
           <div class="social">
@@ -126,6 +126,18 @@ async function fetchProfile(usernameParam) {
     profileDiv.innerHTML = `<p>Error fetching data.</p>`;
   }
 }
+
+// Navigation mobile toggle
+const nav = document.getElementById('nav');
+const navBtn = document.getElementById('nav-btn');
+
+function toggleNav() {
+  nav.classList.toggle('open');
+  navBtn.classList.toggle('fa-bars');
+  navBtn.classList.toggle('fa-xmark');
+}
+
+navBtn.addEventListener('click', toggleNav);
 
 // History management
 function saveSearch(username) {

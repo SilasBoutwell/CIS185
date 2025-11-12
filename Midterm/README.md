@@ -1,4 +1,5 @@
 # Project Name: GitHub Profile Explorer
+A responsive web app for exploring GitHub profiles with dynamic theming and local insights.
 
 ## CIS 185 - Midterm Project
 ## Author: Silas Boutwell
@@ -50,12 +51,15 @@ Project files in this folder:
 │   &ensp;└── flowchart.drawio.svg     &emsp;# Flowchart for design and ideas  
 
 ## 6. Challenges Faced
-- Dynamic color extraction required using the avatar image with `crossOrigin` to avoid tainting the canvas. Handling images that fail to load or return neutral (gray) palettes was addressed by falling back to a secondary palette color or a default theme color, which was necessary UI and accesability purposes.
-- Ensuring consistent, readable contrast when applying extracted colors to UI components required detecting near-gray colors and choosing alternate colors to avoid washed-out or low-contrast UI.
+- Dynamic color extraction required using the avatar image with `crossOrigin` to avoid tainting the canvas. Handling images that fail to load or return neutral (gray) palettes was addressed by falling back to a secondary palette color or a default theme color, which was necessary for UI and accesability purposes.
+- Ensuring consistent, readable contrast when applying extracted colors to UI components required detecting near-gray tones and choosing alternate colors to avoid washed-out or low-contrast UI.
 - Persisting a friendly search history and last-viewed profile was implemented with `localStorage`, while keeping the UX simple (no backend needed).
 
 ## 7. AI Tools Used
-about page, features page, readme, file structure help, favicon generation
+AI supported content and design tasks throughout the project, including:
+- About and Features page writing
+- README drafting and refinement
+- Favicon generation
 
 ## 8. Future Improvements
 - Add paging / lazy-loading for repositories and rate-limit handling for large responses
