@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Smooth transitions */
+* {
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Hide default cursor */
+body {
+  cursor: none;
+}
+
+/* Prevent text selection during animations */
+.no-select {
+  user-select: none;
+}
+
+/* Hide browser cursor */
+* {
+  cursor: none !important;
+}
+
+/* Prevent text-selection cursor override */
+input, textarea {
+  cursor: text !important;
+}
