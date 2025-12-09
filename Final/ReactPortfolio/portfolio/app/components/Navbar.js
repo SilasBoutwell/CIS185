@@ -6,7 +6,6 @@ export default function Navbar() {
     <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-xl bg-white/5 border-b border-white/10 py-4">
       <div className="max-w-5xl mx-auto px-6 flex justify-between">
         
-        {/* Logo / Home */}
         <Link
           href="/"
           className="text-lg font-semibold cursor-none"

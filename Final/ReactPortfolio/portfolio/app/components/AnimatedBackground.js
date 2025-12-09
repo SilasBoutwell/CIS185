@@ -17,7 +17,6 @@ export default function AnimatedBackground() {
     resize();
     window.addEventListener("resize", resize);
 
-    // Create particles
     for (let i = 0; i < particleCount; i++) {
       particles.push({
         x: Math.random() * canvas.width,
@@ -28,7 +27,7 @@ export default function AnimatedBackground() {
       });
     }
 
-    let mouse = { x: -1000, y: -1000 }; // initial offscreen
+    let mouse = { x: -1000, y: -1000 }; 
 
     window.addEventListener("mousemove", (e) => {
       mouse.x = e.clientX;
@@ -39,29 +38,25 @@ export default function AnimatedBackground() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       particles.forEach((p) => {
-        // Random movement
         p.x += p.speedX;
         p.y += p.speedY;
 
-        // Slight reaction if near the cursor
         const dx = mouse.x - p.x;
         const dy = mouse.y - p.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
 
-        const influenceRadius = 200; // pixels
+        const influenceRadius = 200;
         if (dist < influenceRadius) {
-          const force = (influenceRadius - dist) / influenceRadius * 0.3; // small force
-          p.x -= dx * 0.05 * force; // move slightly away
+          const force = (influenceRadius - dist) / influenceRadius * 0.3;
+          p.x -= dx * 0.05 * force;
           p.y -= dy * 0.05 * force;
         }
 
-        // Wrap edges
         if (p.x < 0) p.x = canvas.width;
         if (p.x > canvas.width) p.x = 0;
         if (p.y < 0) p.y = canvas.height;
         if (p.y > canvas.height) p.y = 0;
 
-        // Draw particle
         ctx.fillStyle = "rgba(255,255,255,0.7)";
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);

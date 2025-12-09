@@ -2,45 +2,24 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-/**
- * Supercharged LoadingScreen
- *
- * Behavior:
- *  - Shows two visible bars that slide open
- *  - Reveals "Silas.dev" with gradient + glow + subtle RGB sweep
- *  - After 5s triggers an exit: text grows, lifts, blurs and fades while overlay fades out
- *  - Uses AnimatePresence.onExitComplete to remove the overlay after exit finishes
- *
- * Notes:
- *  - No external CSS required beyond Tailwind utilities; a few inline styles are used for effects.
- *  - Ensure you only import and render <LoadingScreen /> once (in layout.js) and do NOT make layout conditionally remove it.
- */
-
 export default function LoadingScreen() {
-  // controls: visible shows the overlay; exiting triggers the exit animations
   const [visible, setVisible] = useState(true);
   const [exiting, setExiting] = useState(false);
-  const [removed, setRemoved] = useState(false); // final removal after exit completes
+  const [removed, setRemoved] = useState(false);
 
   useEffect(() => {
-    // after 5 seconds start exit sequence
     const timer = setTimeout(() => setExiting(true), 5000);
     return () => clearTimeout(timer);
   }, []);
 
-  // When exiting, we flip visible -> false but keep the AnimatePresence in DOM
   useEffect(() => {
     if (exiting) {
-      // wait a tick then mark visible false so AnimatePresence runs exit animations
-      // we keep AnimatePresence rendered until onExitComplete runs
       setVisible(false);
     }
   }, [exiting]);
 
-  // If removed is true, don't render anything (fully finished)
   if (removed) return null;
 
-  // Motion variants for re-use
   const overlayVariants = {
     initial: { opacity: 1 },
     visible: { opacity: 1 },
@@ -56,10 +35,8 @@ export default function LoadingScreen() {
     open: { height: 0, transition: { duration: 1.5, delay: 0.8, ease: "easeInOut" } },
   };
 
-  // text enter + exit handled by motion props below
   return (
     <AnimatePresence
-      // when all exit animations are complete, remove overlay from React tree
       onExitComplete={() => {
         setRemoved(true);
       }}
@@ -91,7 +68,7 @@ export default function LoadingScreen() {
             style={{ zIndex: 30 }}
           />
 
-          {/* Subtle noise/scanline (for cinematic polish) */}
+          {/* Subtle scanline */}
           <motion.div
             aria-hidden
             className="absolute inset-0 pointer-events-none"
@@ -111,7 +88,7 @@ export default function LoadingScreen() {
             className="absolute inset-0 pointer-events-none"
             initial={{ opacity: 0 }}
             animate={{ opacity: [0, 0.12, 0], transition: { duration: 2.0, delay: 1.2 } }}
-            style={{ background: "radial-gradient(circle at 30% 30%, rgba(255,255,255,0.03), transparent 10%)", zIndex: 20 }}
+            style={{ background: "radial-gradient(circle at 30% 30%, rgba(0,0,0,0.03), transparent 10%)", zIndex: 20 }}
           />
 
           {/* SILAS.DEV center text with enter+exit animation */}
@@ -157,7 +134,7 @@ export default function LoadingScreen() {
             </motion.span>
           </motion.h1>
 
-          {/* subtle bottom brand (optional) */}
+          {/* subtle bottom text */}
           <motion.div
             className="absolute bottom-12 text-xs opacity-60 z-40"
             initial={{ opacity: 0 }}
@@ -165,7 +142,6 @@ export default function LoadingScreen() {
             transition={{ delay: 2.8, duration: 0.6 }}
             style={{ letterSpacing: "0.08em" }}
           >
-            {/* small tagline */}
             <span>development · coding · freelancing</span>
           </motion.div>
         </motion.div>

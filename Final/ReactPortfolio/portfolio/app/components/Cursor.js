@@ -25,10 +25,8 @@ export default function Cursor() {
     };
 
     const tick = () => {
-      // Cursor = moves instantly
       cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
 
-      // Follower = smooth (only if not in nav mode)
       if (!navTarget) {
         followerX += ((mouseX - followerX) * 0.12) - 1.1;
         followerY += ((mouseY - followerY) * 0.12) - 1.1;
@@ -67,14 +65,12 @@ export default function Cursor() {
 
   return (
     <>
-      {/* MAIN cursor (zero lag) */}
       <div
         ref={cursorRef}
         className="fixed top-0 left-0 w-3 h-3 rounded-full pointer-events-none z-[9999]
                    bg-white mix-blend-difference"
       ></div>
 
-      {/* FOLLOWER (disabled on nav links) */}
       <div
         ref={followerRef}
         className={`fixed top-0 left-0 w-8 h-8 rounded-full pointer-events-none z-[9998]
