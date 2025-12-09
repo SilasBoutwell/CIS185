@@ -88,3 +88,27 @@ This project demonstrates:
 - Focus on motion, color, and smooth user experience
 
 The foundation is built to grow over time with more advanced animation, GitHub integration, and overall UX refinement.
+
+## AI Assistance & Collaboration
+
+Throughout the development of this project, AI tools were used as part of the workflow to enhance implementation speed (becasue I changed my mind so many times before commiting to the React-ify Version) and explore complex visual behavior. AI assistance contributed in the following areas:
+
+### BlobMorph Animation
+AI helped design and refine the logic behind:
+- Multi-layer color transitions using independent hue timelines
+- Smooth drifting behavior based on randomized pixel targets (although I'm still a little stuck on this one cause they don't move a lot, but it's fine)
+- Ensuring all blobs began at unique color start points
+- Debugging issues where blobs initially shared the same hue
+- Improving animation smoothness and preventing visual artifacts
+
+### Magnetic Button Interaction
+AI contributed to polishing the magnet-style button by:
+- Improving cursor tracking responsiveness
+- Reducing transform jitter and delay
+- Enhancing the reusable component structure
+
+### README Preparation
+AI was used to:
+- Organize project sections into a clear, structured format
+- Provide this AI section summarizing its own contributions (quite smart if you know, just ask it to describe all where it helped you)
+
